@@ -1,4 +1,8 @@
-/** Colors */
+// Colors
 $primary: #232323;
 $background: $primary;
 $text-color: #969696;
+
+$global-emphasis-color: lighten($text-color, 20);
+$global-color: $text-color;
+$global-muted-color: darken($text-color, 20);

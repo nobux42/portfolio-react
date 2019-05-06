@@ -1,13 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import * as serviceWorker from './serviceWorker'
+import PortfolioApp from './components/PortfolioApp'
 
-import 'normalize.css/normalize.css';
-import './styles/style.scss';
+import 'uikit/dist/js/uikit';
+import 'normalize.css/normalize.css'
+import './styles/style.scss'
 
-ReactDOM.render(<div class="uk-section"><div class="uk-container"><p>something new.</p><a className="uk-button uk-button-default" href="">Button</a></div></div>, document.getElementById('root'));
+ReactDOM.render(<PortfolioApp />, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.unregister()
