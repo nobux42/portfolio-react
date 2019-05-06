@@ -5,8 +5,7 @@ import * as serviceWorker from './serviceWorker';
 import 'normalize.css/normalize.css';
 import './styles/style.scss';
 
-
-ReactDOM.render(<p>something new.</p>, document.getElementById('root'));
+ReactDOM.render(<div class="uk-section"><div class="uk-container"><p>something new.</p><a className="uk-button uk-button-default" href="">Button</a></div></div>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
