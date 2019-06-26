@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PortfolioContext from '../context/portfolio-context'
 import Header from './Header'
+import Eyecatch from './top/Eyecatch'
 
 const PortfolioApp = () => {
     const [works, setWorks] = useState([])
@@ -25,6 +26,7 @@ const PortfolioApp = () => {
     return (
         <PortfolioContext.Provider value={{ works }}>
             <Header/>
+            <Eyecatch/>
         </PortfolioContext.Provider>
     )
 }
