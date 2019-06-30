@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <div>
+        <div className="">
             <header id="header">
                 <nav className="uk-navbar" uk-navbar="">
                     <div className="uk-navbar-left">

@@ -1,5 +1,17 @@
 #header {
-    
+    position: fixed;
+    width: 100%;
+    top: 0;
+    color: white;
+
+    .uk-navbar {
+        .uk-navbar-left {
+            .uk-logo {
+                font-family: Roboto-thin;
+                font-weight: 400;
+            }
+        }
+    }
 }
 #sidenav {
     .uk-offcanvas-close {
