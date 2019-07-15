@@ -1,0 +1,38 @@
+import React, { useState, useEffect } from 'react'
+import PortfolioContext, { IContextProps } from '../context/portfolio-context'
+import Header from './Header'
+import Eyecatch from './top/Eyecatch'
+
+const PortfolioApp: React.FC = () => {
+    const [works, setWorks] = useState<IContextProps>({ products:[] })
+
+    useEffect(() => {
+        setWorks(
+            {
+                products: [
+                    {
+                        name: "kashiwa-no-ha navi"
+                    },
+                    {
+                        name: "Mobile Bee"
+                    },
+                    {
+                        name: "App Ape Analytics ver 1.0"
+                    },
+                    {
+                        name: "TimeStack"
+                    }
+                ]
+            }
+        )
+    }, [])
+
+    return (
+        <PortfolioContext.Provider value={ works }>
+            <Header/>
+            <Eyecatch/>
+        </PortfolioContext.Provider>
+    )
+}
+
+export { PortfolioApp as default }

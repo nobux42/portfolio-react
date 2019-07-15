@@ -1,6 +1,0 @@
-
-import React from 'react'
-
-const PortfolioContext = React.createContext()
-
-export { PortfolioContext as default }

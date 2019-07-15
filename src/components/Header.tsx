@@ -13,7 +13,7 @@ const Header = () => {
                             <li className="uk-active"><a href="/#">work</a></li>
                             <li><a href="/#">about</a></li>
                         </ul>
-                        <a className="uk-navbar-toggle uk-hidden@s" uk-toggle="target: #sidenav" uk-navbar-toggle-icon="" ></a>
+                        <a className="uk-navbar-toggle uk-hidden@s" uk-toggle="target: #sidenav" uk-navbar-toggle-icon=""></a>
                     </div>
                 </nav>
             </header>
