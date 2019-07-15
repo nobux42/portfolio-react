@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -6,14 +7,14 @@ const Header = () => {
             <header id="header">
                 <nav className="uk-navbar" uk-navbar="">
                     <div className="uk-navbar-left">
-                        <a className="uk-navbar-item uk-logo" href="/#">nobux42</a>
+                        <Link className="uk-navbar-item uk-logo" to="/">nobux42</Link>
                     </div>
                     <div className="uk-navbar-right">
                         <ul className="uk-navbar-nav uk-visible@s">
-                            <li className="uk-active"><a href="/#">work</a></li>
-                            <li><a href="/#">about</a></li>
+                            <li><Link to="/detail">detail</Link></li>
+                            <li><Link to="/">about</Link></li>
                         </ul>
-                        <a className="uk-navbar-toggle uk-hidden@s" uk-toggle="target: #sidenav" uk-navbar-toggle-icon=""></a>
+                        <span className="uk-navbar-toggle uk-hidden@s" uk-toggle="target: #sidenav" uk-navbar-toggle-icon=""></span>
                     </div>
                 </nav>
             </header>
@@ -22,8 +23,8 @@ const Header = () => {
                 <div className="uk-offcanvas-bar">
                     <button className="uk-offcanvas-close" type="button" uk-close=""></button>
                     <ul className="uk-nav">
-                        <li><a className="" href="/#">work</a></li>
-                        <li><a className="" href="/#">about</a></li>
+                        <li><Link className="" to="/detail">detail</Link></li>
+                        <li><Link className="" to="/">about</Link></li>
                     </ul>
                 </div>
             </div>

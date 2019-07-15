@@ -2,15 +2,15 @@
     display: flex;
     justify-content: center;
     padding-top: 40px;
-    background: linear-gradient(135deg, #161616, #000000);
+    background: linear-gradient(135deg, $background-dark, $black);
 
     .octettruss-svg {
         height: 256px;
 
         g {
             path {
-                stroke: #969696;
-                fill: #969696;
+                stroke: $foreground;
+                fill: $foreground;
 
                 &.path {
                     stroke-dasharray: 5000;
@@ -73,6 +73,6 @@
         fill: transparent;
     }
     100% {
-        fill: #969696;
+        fill: $foreground;
     }
 }

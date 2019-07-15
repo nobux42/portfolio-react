@@ -1,15 +1,17 @@
 @import "common/variables";
 @import "common/fonts";
+@import "common/layouts";
 
 @import "uikit/src/scss/variables-theme.scss";
 @import "uikit/src/scss/mixins-theme.scss";
 @import "uikit/src/scss/uikit-theme.scss";
 
 @import "components/header";
-@import "components/top/eyecatch";
+@import "components/eyecatch";
+@import "components/top/top";
 
 html {
-    background: $background;
+    background: $background-dark;
 }
 body {
     color: $text-color;

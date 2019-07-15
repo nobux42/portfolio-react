@@ -1,8 +1,19 @@
 // Colors
-$primary: #232323;
-$background: $primary;
-$text-color: #969696;
+$brand-primary: #232323;
+$brand-sub: #969696;
+$background: $brand-primary;
+$foreground: $brand-sub;
+
+$background-dark: #161616;
+
+$text-color: $foreground;
 
 $global-emphasis-color: lighten($text-color, 20);
 $global-color: $text-color;
 $global-muted-color: darken($text-color, 20);
+
+$black: #000;
+$white: #FFF;
+
+// Dimes
+$header-height: 80px;
