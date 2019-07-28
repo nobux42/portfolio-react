@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Route, Switch, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import PortfolioContext, { IContextProps } from '../context/portfolio-context'
 import Header from './Header'
 import Eyecatch from './top/Eyecatch'

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Eyecatch from './top/Eyecatch'
 
 const Top: React.FC = () => {
     return (
