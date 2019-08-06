@@ -1,14 +1,19 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { hogeReducer, HogeState } from './states/states';
+import { epicMiddleware, rootEpic} from './epics/epics'
 
 export type AppState = {
   hoge: HogeState
 };
 
-const store = createStore(
-  combineReducers<AppState>({
-    hoge: hogeReducer
-  })
-);
+export default function configureStore() {
+    const store = createStore(
+    combineReducers<AppState>({
+        hoge: hogeReducer
+    }),
+    applyMiddleware(epicMiddleware)
+    );
+    epicMiddleware.run(rootEpic);
 
-export default store;
+    return store;
+}

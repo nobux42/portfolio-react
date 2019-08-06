@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import { Provider } from 'react-redux';
-import Store from '../store';
+import configureStore from '../store'
 import Header from './Header'
 import Eyecatch from './top/Eyecatch'
 import Top from './Top'
 import Detail from './Detail'
 
+const store = configureStore()
 
 const App: React.FC = () => {
     useEffect(() => {
@@ -14,7 +15,7 @@ const App: React.FC = () => {
     }, [])
 
     return (
-        <Provider store={Store}>
+        <Provider store={store}>
             <Router>
                 <Header/>
                 <Eyecatch/>

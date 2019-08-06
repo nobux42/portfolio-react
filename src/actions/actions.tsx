@@ -4,5 +4,6 @@ const actionCreator = actionCreatorFactory();
 
 export const hogeActions = {
   updateName: actionCreator<string>('ACTIONS_UPDATE_NAME'),
-  updateEmail: actionCreator<string>('ACTIONS_UPDATE_EMAIL')
+  updateNameComplete: actionCreator<string>('ACTIONS_UPDATE_NAME_COMPLETE'),
+  updateEmail: actionCreator.async<undefined, undefined>('ACTIONS_UPDATE_EMAIL')
 };

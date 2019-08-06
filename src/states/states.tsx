@@ -15,6 +15,6 @@ export const hogeReducer = reducerWithInitialState(initialState)
   .case(hogeActions.updateName, (state, name) => {
     return Object.assign({}, state, { name });
   })
-  .case(hogeActions.updateEmail, (state, email) => {
+  .case(hogeActions.updateEmail.done, (state, email) => {
     return Object.assign({}, state, { email });
   });

@@ -39,7 +39,7 @@ const Top: React.SFC<HogeProps>  = (props: HogeProps) => {
 function mapDispatchToProps(dispatch: Dispatch<Action<string>>) {
     return {
       updateName: (v: string) => dispatch(hogeActions.updateName(v)),
-      updateEmail: (v: string) => dispatch(hogeActions.updateEmail(v))
+      //updateEmail: (v: string) => dispatch(hogeActions.updateEmail(v))
     };
   }
   
