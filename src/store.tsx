@@ -8,10 +8,10 @@ export type AppState = {
 
 export default function configureStore() {
     const store = createStore(
-    combineReducers<AppState>({
-        hoge: hogeReducer
-    }),
-    applyMiddleware(epicMiddleware)
+        combineReducers<AppState>({
+            hoge: hogeReducer
+        }),
+        applyMiddleware(epicMiddleware)
     );
     epicMiddleware.run(rootEpic);
 

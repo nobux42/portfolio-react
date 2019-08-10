@@ -14,7 +14,7 @@ interface HogeActions {
 interface OwnProps {}   
 type HogeProps = OwnProps & HogeState & HogeActions;
 
-const Top: React.SFC<HogeProps>  = (props: HogeProps) => {
+const Top: React.FC<HogeProps>  = (props: HogeProps) => {
     return (
         <>
             <section className="uk-section">
@@ -35,17 +35,16 @@ const Top: React.SFC<HogeProps>  = (props: HogeProps) => {
     )
 }
 
-
 function mapDispatchToProps(dispatch: Dispatch<Action<string>>) {
     return {
       updateName: (v: string) => dispatch(hogeActions.updateName(v)),
       //updateEmail: (v: string) => dispatch(hogeActions.updateEmail(v))
     };
-  }
+}
   
-  function mapStateToProps(appState: AppState) {
+function mapStateToProps(appState: AppState) {
     return Object.assign({}, appState.hoge);
-  }
+}
   
-  export default connect(mapStateToProps, mapDispatchToProps)(Top);
+export default connect(mapStateToProps, mapDispatchToProps)(Top);
   

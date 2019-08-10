@@ -8,7 +8,6 @@ import { combineEpics, Epic, createEpicMiddleware, ofType, ActionsObservable } f
 import { hogeActions } from '../actions/actions'
 import { HogeState } from '../states/states' 
 
-
 const loggingEpic: Epic<Action<string>> =
     action$ => 
         action$.pipe(
