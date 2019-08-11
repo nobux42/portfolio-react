@@ -1,17 +1,23 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { hogeReducer, HogeState } from './states/states';
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { firebaseReducer, FirebaseState, userReducer, UserState } from './states/states'
 import { epicMiddleware, rootEpic} from './epics/epics'
+import { createLogger } from 'redux-logger'
 
 export type AppState = {
-  hoge: HogeState
+  firebase: FirebaseState
+  user: UserState
 };
 
 export default function configureStore() {
     const store = createStore(
         combineReducers<AppState>({
-            hoge: hogeReducer
+            firebase: firebaseReducer,
+            user: userReducer,
         }),
-        applyMiddleware(epicMiddleware)
+        applyMiddleware(
+            epicMiddleware,
+            createLogger({ level: "info" })
+        )
     );
     epicMiddleware.run(rootEpic);
 

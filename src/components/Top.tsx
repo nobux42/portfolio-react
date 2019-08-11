@@ -1,49 +1,47 @@
-import React, { useState, useEffect } from 'react'
-import { Dispatch } from 'redux';
-import { connect } from 'react-redux';
-import { Action } from 'typescript-fsa';
-import { hogeActions } from '../actions/actions';
-import { HogeState } from '../states/states';
-import { AppState } from '../store';
+import React, { useEffect } from 'react'
+import { Dispatch } from 'redux'
+import { connect } from 'react-redux'
+import { Action } from 'typescript-fsa'
+import { AppState } from '../store'
+import Section from './common/Section'
+import WorkCard from './ui-parts/WorkCard'
 
-interface HogeActions {
-    updateName: (v: string) => Action<string>;
-    updateEmail: (v: string) => Action<string>;
+interface TopActions {
+    
 }
 
-interface OwnProps {}   
-type HogeProps = OwnProps & HogeState & HogeActions;
+interface OwnProps {
+    
+}
 
-const Top: React.FC<HogeProps>  = (props: HogeProps) => {
+type TopProps = OwnProps & AppState & TopActions;
+
+const Top: React.FC<TopProps>  = (props: TopProps) => {
+    useEffect(() => {
+        
+    }, [])
+
     return (
         <>
-            <section className="uk-section">
-                <div className="uk-container">
-                    <p>Top</p>
-                    <h3>{ props.name }</h3>
-                    <div className="field">
-                        <input
-                            type="text"
-                            placeholder="name"
-                            value={props.name}
-                            onChange={(e) => props.updateName(e.target.value)}
-                        />
-                    </div>
+            <Section title={'Works'}>
+                <div className="uk-child-width-1-2@m" uk-grid="">
+                {
+                    props.firebase.works.map(work => <WorkCard work={work}></WorkCard>)
+                }
                 </div>
-            </section>
+            </Section>
         </>
     )
 }
 
-function mapDispatchToProps(dispatch: Dispatch<Action<string>>) {
+function mapDispatchToProps(dispatch: Dispatch<Action<string | void>>) {
     return {
-      updateName: (v: string) => dispatch(hogeActions.updateName(v)),
-      //updateEmail: (v: string) => dispatch(hogeActions.updateEmail(v))
+      
     };
 }
   
-function mapStateToProps(appState: AppState) {
-    return Object.assign({}, appState.hoge);
+function mapStateToProps(state: AppState) {
+    return Object.assign({}, state);
 }
   
 export default connect(mapStateToProps, mapDispatchToProps)(Top);

@@ -1,25 +1,35 @@
 
-import { AnyAction, Action } from 'typescript-fsa';
+import { AnyAction, Action, Success } from 'typescript-fsa';
 import 'rxjs';
-import { map } from "rxjs/operators";
-import { combineEpics, Epic, createEpicMiddleware, ofType, ActionsObservable } from 'redux-observable';
+import { map, mergeMap } from "rxjs/operators";
+import { combineEpics, Epic, createEpicMiddleware, ofType } from 'redux-observable';
+import { firebaseActions, IWork } from '../actions/actions'
+import firestore from '../firebase';
 
-
-import { hogeActions } from '../actions/actions'
-import { HogeState } from '../states/states' 
-
-const loggingEpic: Epic<Action<string>> =
+const firebaseGetWorksEpic: Epic<AnyAction> =
     action$ => 
         action$.pipe(
-            ofType(hogeActions.updateName.type),
-            map((param) => {
-                console.log("epic: ", param)
-                return hogeActions.updateNameComplete("")
+            ofType(firebaseActions.getWorks.started.type),
+            mergeMap((param) => {
+                return firestore.collection('Works').get().then((snapshot) => {
+                    const works: IWork[] = []
+                    snapshot.forEach((doc) => {
+                        works.push({
+                            title: doc.data().title,
+                            skills: []
+                        })
+                    })
+                    return firebaseActions.getWorks.done({ result: works })
+                })
+                // ,map((param) => {
+                //     console.log("epic: ", param)
+                //     return hogeActions.updateNameComplete("")
+                // })
             })
         )
 
 export const rootEpic = combineEpics(
-    loggingEpic,
+    firebaseGetWorksEpic,
 );
 
-export const epicMiddleware = createEpicMiddleware<Action<string>, Action<string>, HogeState>();
+export const epicMiddleware = createEpicMiddleware();
