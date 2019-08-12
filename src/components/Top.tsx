@@ -22,7 +22,7 @@ const Top: React.FC<TopProps>  = (props: TopProps) => {
     }, [])
 
     return (
-        <>
+        <div className="top">
             <Section title={'Works'}>
                 <div className="uk-child-width-1-3@m" uk-grid="">
                 {
@@ -31,7 +31,7 @@ const Top: React.FC<TopProps>  = (props: TopProps) => {
                 }
                 </div>
             </Section>
-        </>
+        </div>
     )
 }
 

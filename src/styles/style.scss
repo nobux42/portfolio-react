@@ -7,8 +7,8 @@
 @import "uikit/src/scss/uikit-theme.scss";
 
 @import "components/header";
-@import "components/eyecatch";
-@import "components/top/top";
+@import "components/top";
+@import "components/top/eyecatch";
 
 html {
     background: $background-dark;

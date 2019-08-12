@@ -23,8 +23,7 @@ const App: React.FC<AppProps> = (props: AppProps) => {
     return (
         <Router>
             <Header/>
-            <Eyecatch/>
-            <p>{props.user.hoveredWork ? props.user.hoveredWork.title : "not selected" }</p>
+            <Eyecatch hoveredWork={props.user.hoveredWork}/>
             <main>
                 <Switch>
                     <Route path="/" component={Top} exact={true} />
