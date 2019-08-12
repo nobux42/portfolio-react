@@ -1,5 +1,17 @@
 
 # My Portfolio Site with React
+- React
+  - react-route
+  - Redux
+    - typescript-fsa & typescript-fsa-reducers
+    - rxjs & redux-obserbable
+- Typescript
+- UIkit
+- Firebase
+  - Hosting
+  - Cloud FireStore
+  - Cloud Storage
+
 ## Create Project
 ```
 // create projeckut with typescript

@@ -3,9 +3,12 @@ import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { Action } from 'typescript-fsa'
 import { userActions, IWork } from '../../actions/actions'
+import { storage } from '../../firebase'
+import { IWorkState } from '../../states/states'
 
 interface OwnProps {
-    work: IWork;
+    key: number;
+    work: IWorkState;
 }   
 
 interface WorkCardActions {
@@ -16,12 +19,12 @@ type WorkCardProps = OwnProps & WorkCardActions;
 
 const WorkCard: React.FC<WorkCardProps> = (props: WorkCardProps) => {
     return (
-        <div key={props.work.title} 
+        <div className="workcard" 
             onMouseEnter={(e) => props.hoverWork(props.work)}
             onMouseLeave={(e) => props.hoverWork(null)}>
-            <div className="uk-card">
+            <div className="uk-card uk-card-default">
                 <div className="uk-card-media-top">
-                    <img src="" alt=""/>
+                    <div className="uk-height-small uk-background-cover" data-src={props.work.thumbnailURL} uk-img=""></div>
                 </div>
                 <div className="uk-card-body">
                     <h3 className="uk-card-title">{props.work.title}</h3>

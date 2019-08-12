@@ -24,9 +24,10 @@ const Top: React.FC<TopProps>  = (props: TopProps) => {
     return (
         <>
             <Section title={'Works'}>
-                <div className="uk-child-width-1-2@m" uk-grid="">
+                <div className="uk-child-width-1-3@m" uk-grid="">
                 {
-                    props.firebase.works.map(work => <WorkCard work={work}></WorkCard>)
+                    props.firebase.works.map((work, index) => <WorkCard key={index} work={work}></WorkCard>)
+                    //props.firebase.works.map((work, index) => <p key={index}>{work.title}</p>)
                 }
                 </div>
             </Section>
