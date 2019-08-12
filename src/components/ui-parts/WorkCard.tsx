@@ -9,7 +9,7 @@ import { IWorkState } from '../../states/states'
 interface OwnProps {
     key: number;
     work: IWorkState;
-}   
+}
 
 interface WorkCardActions {
     hoverWork: (work: IWork | null) => Action<IWork | null>
@@ -22,7 +22,7 @@ const WorkCard: React.FC<WorkCardProps> = (props: WorkCardProps) => {
         <div className="workcard" 
             onMouseEnter={(e) => props.hoverWork(props.work)}
             onMouseLeave={(e) => props.hoverWork(null)}>
-            <div className="uk-card uk-card-default">
+            <div className="uk-card uk-card-secondary uk-card-hover">
                 <div className="uk-card-media-top">
                     <div className="uk-height-small uk-background-cover" data-src={props.work.thumbnailURL} uk-img=""></div>
                 </div>

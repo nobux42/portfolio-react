@@ -8,6 +8,10 @@ $background-dark: #161616;
 
 $text-color: $foreground;
 
+// UIkit Override
+$global-background: $background;
+$global-primary-background: $foreground;
+$global-secondary-background: $background-dark;
 $global-emphasis-color: lighten($text-color, 20);
 $global-color: $text-color;
 $global-muted-color: darken($text-color, 20);
