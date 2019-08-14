@@ -23,7 +23,7 @@ const App: React.FC<AppProps> = (props: AppProps) => {
     return (
         <Router>
             <Header/>
-            <Eyecatch hoveredWork={props.user.hoveredWork}/>
+            <Eyecatch workHover={props.user.workHover}/>
             <main>
                 <Switch>
                     <Route path="/" component={Top} exact={true} />

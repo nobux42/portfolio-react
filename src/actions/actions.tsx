@@ -1,4 +1,5 @@
 import actionCreatorFactory from 'typescript-fsa'
+import { IWorkState } from '../states/states'
 
 const actionCreator = actionCreatorFactory();
 
@@ -8,11 +9,16 @@ export interface IWork {
   thumbnail: string
 }
 
+export interface WorkHover {
+  hovered: boolean
+  work: IWorkState | null
+}
+
 export const firebaseActions = {
   getWorks: actionCreator.async<void, IWork[]>('ACTIONS_FIREBASE_GET_WORKS'),
   getThumbnail: actionCreator.async<string, string>('ACTIONS_FIREBASE_GET_THUMBNAIL')
 }
 
 export const userActions = {
-  hoverWork: actionCreator<IWork | null>('ACTIONS_USER_HOVER_WORK'),
+  hoverWork: actionCreator<WorkHover>('ACTIONS_USER_HOVER_WORK'),
 }

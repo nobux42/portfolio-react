@@ -1,30 +1,46 @@
 .eyecatch {
+    position: relative;
     display: flex;
     justify-content: center;
     padding-top: 40px;
+    height: 300px;
     background: linear-gradient(135deg, $background-dark, $black);
 
-    .notify {
-        &.notify-enter {
+    .cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+
+        &.cover-enter {
             opacity: 0;
-            transform: scale(0.9);
+            transform: translateX(20px);
         }
-        &.notify-enter-active {
-            opacity: 1;
-            transform: translateX(0);
-            transition: opacity 300ms, transform 300ms;
+        &.cover-enter-active {
+            opacity: 0.3;
+            transform: translateX(0px);
+            transition: opacity 300ms, transform 300ms ease;
         }
-        &.notify-exit {
-            opacity: 1;
+        &.cover-exit {
+            opacity: 0.3;
+            transform: translateX(0px);
         }
-        &.notify-exit-active {
+        &.cover-exit-active {
             opacity: 0;
-            transform: scale(0.9);
-            transition: opacity 300ms, transform 300ms;
+            transform: translateX(20px);
+            transition: opacity 300ms, transform 300ms ease;
+        }
+        &.cover-exit-done {
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 300ms, transform 300ms ease;
         }
     }
 
     .octettruss-svg {
+        position: absolute;
         height: 256px;
 
         g {

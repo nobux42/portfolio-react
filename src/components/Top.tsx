@@ -27,9 +27,14 @@ const Top: React.FC<TopProps>  = (props: TopProps) => {
                 <div className="uk-child-width-1-3@m" uk-grid="">
                 {
                     props.firebase.works.map((work, index) => <WorkCard key={index} work={work}></WorkCard>)
-                    //props.firebase.works.map((work, index) => <p key={index}>{work.title}</p>)
                 }
                 </div>
+            </Section>
+            <Section title={'Sample'}>
+                <div></div>
+            </Section>
+            <Section title={'Sample'}>
+                <div></div>
             </Section>
         </div>
     )

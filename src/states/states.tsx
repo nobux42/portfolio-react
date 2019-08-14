@@ -1,6 +1,6 @@
 import { Success } from 'typescript-fsa';
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
-import { firebaseActions, userActions, IWork } from '../actions/actions';
+import { firebaseActions, userActions, IWork, WorkHover } from '../actions/actions';
 
 export interface IWorkState extends IWork{
   thumbnailURL: string
@@ -19,11 +19,14 @@ const initialFirebaseState: FirebaseState = {
 };
 
 export interface UserState {
-  hoveredWork: IWork | null;
+  workHover: WorkHover;
 }
 
 const initialUserState: UserState = {
-  hoveredWork: null
+  workHover: { 
+    hovered: false,
+    work: null,
+  }
 };
 
 export const firebaseReducer = reducerWithInitialState(initialFirebaseState)
@@ -40,6 +43,6 @@ export const firebaseReducer = reducerWithInitialState(initialFirebaseState)
   });
 
 export const userReducer = reducerWithInitialState(initialUserState)
-  .case(userActions.hoverWork, (state, work) => {
-    return Object.assign({}, state, { hoveredWork: work });
+  .case(userActions.hoverWork, (state, workHover: WorkHover) => {
+    return Object.assign({}, state, { workHover: workHover });
   });

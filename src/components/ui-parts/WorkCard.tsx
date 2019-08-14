@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Action } from 'typescript-fsa'
 import { userActions, IWork } from '../../actions/actions'
 import { storage } from '../../firebase'
+import { WorkHover } from '../../actions/actions'
 import { IWorkState } from '../../states/states'
 
 interface OwnProps {
@@ -12,17 +13,17 @@ interface OwnProps {
 }
 
 interface WorkCardActions {
-    hoverWork: (work: IWork | null) => Action<IWork | null>
+    hoverWork: (workHover: WorkHover) => Action<WorkHover>
 }
 
 type WorkCardProps = OwnProps & WorkCardActions;
 
 const WorkCard: React.FC<WorkCardProps> = (props: WorkCardProps) => {
     return (
-        <div className="workcard" 
-            onMouseEnter={(e) => props.hoverWork(props.work)}
-            onMouseLeave={(e) => props.hoverWork(null)}>
-            <div className="uk-card uk-card-secondary uk-card-hover">
+        <div className="workcard">
+            <div className="uk-card uk-card-secondary uk-card-hover"
+                onMouseEnter={(e) => props.hoverWork({hovered: true, work: props.work})}
+                onMouseLeave={(e) => props.hoverWork({hovered: false, work: props.work})}>
                 <div className="uk-card-media-top">
                     <div className="uk-height-small uk-background-cover" data-src={props.work.thumbnailURL} uk-img=""></div>
                 </div>
@@ -35,9 +36,9 @@ const WorkCard: React.FC<WorkCardProps> = (props: WorkCardProps) => {
     )
 }
 
-function mapDispatchToProps(dispatch: Dispatch<Action<IWork | null>>) {
+function mapDispatchToProps(dispatch: Dispatch<Action<WorkHover>>) {
     return {
-      hoverWork: (work: IWork | null) => dispatch(userActions.hoverWork(work)),
+      hoverWork: (workHover: WorkHover) => dispatch(userActions.hoverWork(workHover)),
     };
 }
   

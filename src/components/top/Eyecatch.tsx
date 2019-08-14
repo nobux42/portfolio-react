@@ -3,21 +3,28 @@ import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
 import OctetttrussSvg from '../asset/OctetttrussSvg'
-import { IWork } from '../../actions/actions'
+import { WorkHover } from '../../actions/actions';
+import { IWorkState } from '../../states/states'
+
 
 interface OwnProps {
-    hoveredWork: IWork | null;
+    workHover: WorkHover;
 }
 
 const Eyecatch: React.FC<OwnProps> = (props: OwnProps) => {
     return (
         <div className="eyecatch">
-            <OctetttrussSvg/>
-            <CSSTransition in={!!props.hoveredWork} timeout={200} className="notify" classNames="notify" unmountOnExit>
-                <div>
-                    {props.hoveredWork ? props.hoveredWork.title : "not selected" }
-                </div>
+            <CSSTransition in={!!props.workHover.hovered} timeout={300}  classNames="cover">
+                {
+                    (() => {
+                        if(props.workHover.work) {
+                            return <div className="cover uk-background-cover" data-src={props.workHover.work.thumbnailURL} uk-img=""></div>
+                        }
+                        return <></>
+                    })()
+                }
             </CSSTransition>
+            <OctetttrussSvg/>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import { AnyAction, Action, Success } from 'typescript-fsa';
 import { from, of, defer, forkJoin } from 'rxjs';
 import { map, mergeMap, flatMap } from "rxjs/operators";
 import { combineEpics, Epic, createEpicMiddleware, ofType } from 'redux-observable';
-import { firebaseActions, IWork } from '../actions/actions'
+import { firebaseActions, IWork, userActions } from '../actions/actions'
 import { firestore, storage } from '../firebase';
 
 const firebaseGetWorksEpic: Epic =
@@ -31,11 +31,9 @@ const firebaseGetWorksDoneEpic: Epic =
         action$.pipe(
             ofType(firebaseActions.getWorks.done.type),
             flatMap((action: Action<Success<void, IWork[]>>) => {
-                console.log("action: ", action);
                 return action.payload.result
             }),
             map((work: IWork) => {
-                console.log("thumbnail: ", work)
                 return firebaseActions.getThumbnail.started(work.thumbnail)
             })
         )
@@ -47,13 +45,11 @@ const firebaseGetThumbnailEpic: Epic =
             mergeMap((action: Action<string>) => forkJoin(
                 of(action),
                 defer(() => { 
-                    console.log("spaceRef: ", action)
                     let spaceRef = storage.ref().child(action.payload)
                     return spaceRef.getDownloadURL()
                 })
             )),
             map(([action, url]: [any, any]) => {
-                console.log("url: ", action, url)
                 return firebaseActions.getThumbnail.done({ params: action.payload, result: url })
             })
         )
