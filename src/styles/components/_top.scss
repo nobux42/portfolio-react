@@ -1,3 +1,32 @@
 .top {
     
 }
+
+
+.router-page {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+}
+
+.router-page-enter {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.router-page-enter-active {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.router-page-exit {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.router-page-exit-active {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 300ms, transform 300ms;
+}

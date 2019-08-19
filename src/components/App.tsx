@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Action } from 'typescript-fsa';
+import { CSSTransition } from 'react-transition-group'
 import Header from './Header'
 import Eyecatch from './top/Eyecatch'
 import Top from './Top'
@@ -15,6 +16,12 @@ interface AppActions {
 }
 type AppProps = AppActions & AppState ;
 
+const routes = [
+    { path: '/', name: 'Top', Component: Top },
+    { path: '/detail', name: 'Detail', Component: Detail },
+    { path: '/about', name: 'Detail', Component: Detail },
+]
+
 const App: React.FC<AppProps> = (props: AppProps) => {
     useEffect(() => {
         props.getWorks()
@@ -25,10 +32,22 @@ const App: React.FC<AppProps> = (props: AppProps) => {
             <Header/>
             <Eyecatch workHover={props.user.workHover}/>
             <main>
-                <Switch>
-                    <Route path="/" component={Top} exact={true} />
-                    <Route path="/detail" component={Detail} exact={true} />
-                </Switch>
+                {routes.map(({ path, Component }) => (
+                    <Route key={path} exact path={path}>
+                    {({ match }) => (
+                        <CSSTransition
+                            in={match != null}
+                            timeout={300}
+                            classNames="router-page"
+                            unmountOnExit
+                        >
+                        <div className="router-page">
+                            <Component />
+                        </div>
+                        </CSSTransition>
+                    )}
+                    </Route>
+                ))}
             </main>
         </Router>
     )
