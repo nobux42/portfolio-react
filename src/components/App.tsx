@@ -18,7 +18,7 @@ type AppProps = AppActions & AppState ;
 
 const routes = [
     { path: '/', name: 'Top', Component: Top },
-    { path: '/detail', name: 'Detail', Component: Detail },
+    { path: '/detail/:id', name: 'Detail', Component: Detail },
     { path: '/about', name: 'Detail', Component: Detail },
 ]
 
