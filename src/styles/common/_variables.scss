@@ -11,7 +11,7 @@ $text-color: $foreground;
 // UIkit Override
 $global-background: $background;
 $global-primary-background: $foreground;
-$global-secondary-background: $background-dark;
+$global-secondary-background: $brand-primary;
 $global-emphasis-color: lighten($text-color, 20);
 $global-color: $text-color;
 $global-muted-color: darken($text-color, 20);

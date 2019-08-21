@@ -30,7 +30,7 @@ const App: React.FC<AppProps> = (props: AppProps) => {
     return (
         <Router>
             <Header/>
-            <Eyecatch workHover={props.user.workHover}/>
+            <Eyecatch/>
             <main>
                 {routes.map(({ path, Component }) => (
                     <Route key={path} exact path={path}>
@@ -56,7 +56,7 @@ const App: React.FC<AppProps> = (props: AppProps) => {
 function mapDispatchToProps(dispatch: Dispatch<Action<void>>) {
     return {
       getWorks: () => dispatch(firebaseActions.getWorks.started()),
-    };
+    }
 }
   
 function mapStateToProps(appState: AppState) {

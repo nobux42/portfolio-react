@@ -5,21 +5,28 @@ import { Action } from 'typescript-fsa'
 import { AppState } from '../store'
 import Section from './common/Section'
 import WorkCard from './ui-parts/WorkCard'
+import { IWorkState } from '../states/states';
+import { userActions } from '../actions/actions';
+import { RouteComponentProps, withRouter } from 'react-router';
 
 interface TopActions {
-    
+    selecteWork: (work: IWorkState | null) => Action<IWorkState | null>;
 }
 
 interface OwnProps {
     
 }
 
-type TopProps = OwnProps & AppState & TopActions;
+type TopProps = OwnProps & AppState & TopActions & RouteComponentProps;
 
 const Top: React.FC<TopProps>  = (props: TopProps) => {
     useEffect(() => {
         
     }, [])
+
+    useEffect(() => {
+        props.selecteWork(null)
+    }, [props.location.pathname])
 
     return (
         <div className="top">
@@ -40,15 +47,15 @@ const Top: React.FC<TopProps>  = (props: TopProps) => {
     )
 }
 
-function mapDispatchToProps(dispatch: Dispatch<Action<string | void>>) {
+function mapDispatchToProps(dispatch: Dispatch<Action<IWorkState | null>>) {
     return {
-      
-    };
+        selecteWork: (work: IWorkState | null) => dispatch(userActions.SelecteWork(work)),
+    }
 }
   
 function mapStateToProps(state: AppState) {
     return Object.assign({}, state);
 }
   
-export default connect(mapStateToProps, mapDispatchToProps)(Top);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Top));
   

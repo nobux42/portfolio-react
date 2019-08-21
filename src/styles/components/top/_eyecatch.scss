@@ -38,6 +38,34 @@
             transition: opacity 300ms, transform 300ms ease;
         }
     }
+    .cover-strong {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 1.0;
+
+        &.cover-enter {
+            opacity: 0;
+        }
+        &.cover-enter-active {
+            opacity: 1.0;
+            transition: opacity 300ms;
+        }
+        &.cover-exit {
+            opacity: 1.0;
+            transform: translateX(0px);
+        }
+        &.cover-exit-active {
+            opacity: 0;
+            transition: opacity 300ms;
+        }
+        &.cover-exit-done {
+            opacity: 0;
+            transition: opacity 300ms;
+        }
+    }
 
     .octettruss-svg {
         position: absolute;

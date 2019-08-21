@@ -20,13 +20,15 @@ const initialFirebaseState: FirebaseState = {
 
 export interface UserState {
   workHover: WorkHover;
+  selectedWork: IWorkState | null;
 }
 
 const initialUserState: UserState = {
   workHover: { 
     hovered: false,
     work: null,
-  }
+  },
+  selectedWork: null
 };
 
 export const firebaseReducer = reducerWithInitialState(initialFirebaseState)
@@ -40,9 +42,12 @@ export const firebaseReducer = reducerWithInitialState(initialFirebaseState)
       .map((work: IWorkState) => { work.thumbnailURL = success.result })
     
     return Object.assign({}, state, { stateTmp });
-  });
+  })
 
 export const userReducer = reducerWithInitialState(initialUserState)
   .case(userActions.hoverWork, (state, workHover: WorkHover) => {
     return Object.assign({}, state, { workHover: workHover });
-  });
+  })
+  .case(userActions.SelecteWork, (state, work: IWorkState | null) => {
+    return Object.assign({}, state, { selectedWork: work });
+  })

@@ -21,4 +21,5 @@ export const firebaseActions = {
 
 export const userActions = {
   hoverWork: actionCreator<WorkHover>('ACTIONS_USER_HOVER_WORK'),
+  SelecteWork: actionCreator<IWorkState | null>('ACTIONS_USER_SELECT_WORK'),
 }
