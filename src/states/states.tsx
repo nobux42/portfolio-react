@@ -7,10 +7,12 @@ export interface IWorkState extends IWork{
 }
 
 export interface FirebaseState {
-  works: IWorkState[];
+  isLoading: boolean
+  works: IWorkState[]
 }
 
 const initialFirebaseState: FirebaseState = {
+  isLoading: false,
   works: [{
     title: "", 
     skills:[], 
@@ -32,11 +34,15 @@ const initialUserState: UserState = {
 };
 
 export const firebaseReducer = reducerWithInitialState(initialFirebaseState)
+  .case(firebaseActions.getWorks.started, (state: FirebaseState) => {
+    return Object.assign({}, state, { isLoading: true });
+  })
   .case(firebaseActions.getWorks.done, (state: FirebaseState, success: Success<void, IWork[]>) => {
     return Object.assign({}, state, { works: success.result });
   })
   .case(firebaseActions.getThumbnail.done, (state: FirebaseState, success: Success<string, string>) => {
     let stateTmp =  Object.assign(state);
+    stateTmp.isLoading = false;
     stateTmp.works
       .filter((work: IWorkState) => work.thumbnail == success.params)
       .map((work: IWorkState) => { work.thumbnailURL = success.result })

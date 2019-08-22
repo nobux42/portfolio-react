@@ -27,21 +27,24 @@ const Detail: React.FC<DetailProps> = (props: DetailProps) => {
             let works = props.firebase.works.filter(work => work.title == props.match.params.id)
             if( works.length > 0) {
                 props.selecteWork(works[0])
-            } else {
-                // TODO Wait for firebase?
             }
         }
     };
 
     useEffect(() => {
-        console.log("initial", props)
         selecteWork()
     }, [])
 
     useEffect(() => {
-        console.log("chage")
         selecteWork()
     }, [props.location.pathname])
+
+
+    useEffect(() => {
+        if (!props.firebase.isLoading) {
+            selecteWork()
+        }
+    }, [props.firebase.isLoading])
     
     return (
         <>
