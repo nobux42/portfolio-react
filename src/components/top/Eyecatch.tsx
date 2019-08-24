@@ -43,8 +43,6 @@ const Eyecatch: React.FC<EycatchProps> = (props: EycatchProps) => {
                     })()
                 }
             </CSSTransition>
-            <p>{ props.location.pathname }</p>
-            <p> ID:{ props.match.params ? props.match.params.id: "" }</p>
         </div>
     )
 }

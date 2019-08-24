@@ -29,8 +29,8 @@ const App: React.FC<AppProps> = (props: AppProps) => {
 
     return (
         <Router>
-            <Header/>
             <Eyecatch/>
+            <Header/>
             <main>
                 {routes.map(({ path, Component }) => (
                     <Route key={path} exact path={path}>

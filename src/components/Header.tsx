@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className="">
+        <div className="header">
             <header id="header">
                 <nav className="uk-navbar" uk-navbar="">
                     <div className="uk-navbar-left">
-                        <Link className="uk-navbar-item uk-logo" to="/">nobux42</Link>
+                        <Link className="uk-navbar-item uk-logo" to="/"><img className="logo-image" src="images/octettruss-icon-gray_256.png"/><span className="logo-title">nobux42</span></Link>
                     </div>
                     <div className="uk-navbar-right">
                         <ul className="uk-navbar-nav uk-visible@s">
