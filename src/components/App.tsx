@@ -10,6 +10,7 @@ import Top from './Top'
 import Detail from './Detail'
 import { firebaseActions } from '../actions/actions';
 import { AppState } from '../store';
+import Footer from './Footer';
 
 interface AppActions {
     getWorks: () => Action<void>;
@@ -49,6 +50,7 @@ const App: React.FC<AppProps> = (props: AppProps) => {
                     </Route>
                 ))}
             </main>
+            <Footer/>
         </Router>
     )
 }

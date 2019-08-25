@@ -2,5 +2,33 @@ header {
 
 }
 main {
-    
-}
+    position: relative;
+
+    .router-page {
+        position: relative;
+        left: 0px;
+        right: 0px;
+    }
+    .router-page-enter {
+        position: absolute;
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    .router-page-enter-active {
+        position: relative;
+        opacity: 1;
+        transform: translateY(0px);
+        transition: opacity 300ms, transform 300ms;
+    }
+    .router-page-exit {
+        position: absolute;
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    .router-page-exit-active {
+        position: relative;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 300ms, transform 300ms;
+    }    
+}  
