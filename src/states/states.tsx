@@ -4,6 +4,7 @@ import { firebaseActions, userActions, IWork, WorkHover } from '../actions/actio
 
 export interface IWorkState extends IWork{
   thumbnailURL: string
+  imageURLs: string[]
 }
 
 export interface FirebaseState {
@@ -15,9 +16,13 @@ const initialFirebaseState: FirebaseState = {
   isLoading: false,
   works: [{
     title: "", 
-    skills:[], 
+    skills: [], 
+    description: "", 
     thumbnail: "", 
-    thumbnailURL: ""}],
+    thumbnailURL: "",
+    images: [],
+    imageURLs: [],
+  }]
 };
 
 export interface UserState {
@@ -49,11 +54,24 @@ export const firebaseReducer = reducerWithInitialState(initialFirebaseState)
     
     return Object.assign({}, state, { stateTmp });
   })
+  .case(firebaseActions.getDetailImages.done, (state: FirebaseState, success: Success<IWorkState | null, string[]>) => {
+    if(success.params !== null) {
+      const title = success.params.title
+      let stateTmp =  Object.assign(state);
+      stateTmp.works
+        .filter((work: IWorkState) => work.title == title)
+        .map((work: IWorkState) => { work.imageURLs = success.result })
+      
+      return Object.assign({}, state, { stateTmp });
+    }
+    return Object.assign({}, state);
+  })
 
 export const userReducer = reducerWithInitialState(initialUserState)
-  .case(userActions.hoverWork, (state, workHover: WorkHover) => {
+  .case(userActions.hoverWork, (state: UserState, workHover: WorkHover) => {
     return Object.assign({}, state, { workHover: workHover });
   })
-  .case(userActions.SelecteWork, (state, work: IWorkState | null) => {
+  .case(userActions.SelecteWork, (state: UserState, work: IWorkState | null) => {
     return Object.assign({}, state, { selectedWork: work });
   })
+  

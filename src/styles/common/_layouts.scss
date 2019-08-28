@@ -9,26 +9,34 @@ main {
         left: 0px;
         right: 0px;
     }
-    .router-page-enter {
-        position: absolute;
+    .router-page-enter-active {
         opacity: 0;
         transform: translateY(10px);
     }
-    .router-page-enter-active {
-        position: relative;
+    .router-page-enter-done {
         opacity: 1;
         transform: translateY(0px);
         transition: opacity 300ms, transform 300ms;
     }
-    .router-page-exit {
-        position: absolute;
+    .router-page-exit-active {
         opacity: 1;
         transform: translateY(0px);
     }
-    .router-page-exit-active {
-        position: relative;
+    .router-page-exit-done {
         opacity: 0;
         transform: translateY(10px);
         transition: opacity 300ms, transform 300ms;
     }    
-}  
+}
+
+.uk-section {
+    .uk-container {
+        h2 {
+            margin-bottom: 48px;
+            font-size: 1.5rem;
+            font-weight: 100;
+            letter-spacing: 8px;
+            text-align: center;
+        }
+    }
+}

@@ -124,6 +124,16 @@
     }
 }
 
+@media (max-width: 639px) {
+    .eyecatch {
+        padding-top: 20px;
+        height: 200px;
+
+        .octettruss-svg {
+            height: 192px;
+        }
+    }
+}
 
 @keyframes path_anime {
     0% {

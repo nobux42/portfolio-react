@@ -6,7 +6,9 @@ const actionCreator = actionCreatorFactory();
 export interface IWork {
   title: string
   skills: string[]
+  description: string
   thumbnail: string
+  images: string[]
 }
 
 export interface WorkHover {
@@ -16,7 +18,8 @@ export interface WorkHover {
 
 export const firebaseActions = {
   getWorks: actionCreator.async<void, IWork[]>('ACTIONS_FIREBASE_GET_WORKS'),
-  getThumbnail: actionCreator.async<string, string>('ACTIONS_FIREBASE_GET_THUMBNAIL')
+  getThumbnail: actionCreator.async<string, string>('ACTIONS_FIREBASE_GET_THUMBNAIL'),
+  getDetailImages: actionCreator.async<IWorkState | null, string[]>('ACTIONS_USER_GET_DETAILIMAGES'),
 }
 
 export const userActions = {
