@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker'
 import App from './components/App'
 import configureStore from './store'
 
-import 'uikit/dist/js/uikit';
+import 'uikit/dist/js/uikit'
 import 'normalize.css/normalize.css'
 import './styles/style.scss'
 

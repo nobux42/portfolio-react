@@ -1,8 +1,12 @@
 .top {
+    padding-bottom: 50px;
+
     .uk-section:first-child {
         padding-top: 30px;
     }
-
+    .uk-section {
+        padding-top: 30px;
+    }
     .top-section-skills {
         .skills {
             margin: 0 auto;
@@ -13,13 +17,62 @@
                 display: inline-block;
                 padding: 4px 16px;
                 margin-right: 8px;
-                margin-bottom: 16px;
+                margin-bottom: 24px;
                 font-size: 1.0rem;
-                font-weight: 300;
+                font-weight: 200;
+                letter-spacing: 1px;
                 border: 1px solid $foreground;
                 border-radius: 50px;
             }
         }
     }
+    .top-section-history {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font-weight: 200;
+        letter-spacing: 1px;
+
+        .left {
+            padding-right: 30px;
+            border-right: 1px solid $foreground;
+            font-size: 0.8rem;
+            line-height: 1.5rem;
+        }
+        .right {
+            padding-left: 40px;
+        }
+    }
+    .top-section-about {
+        text-align: center;
+
+        h5{
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        p {
+            font-weight: 200;
+        }
+        .snses {
+            .uk-icon {
+                margin: 0 8px;
+            }
+        }
+    }
 }
 
+@media (max-width: $breakpoint-xsmall-max) {
+    .top {
+        .top-section-history {
+            .left {
+                padding-right: 15px;
+                border-right: 1px solid $foreground;
+                font-size: 0.8rem;
+                line-height: 1.5rem;
+            }
+            .right {
+                padding-left: 20px;
+            }
+        }
+    }
+}

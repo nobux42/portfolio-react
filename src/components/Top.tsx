@@ -53,7 +53,31 @@ const Top: React.FC<TopProps>  = (props: TopProps) => {
                 </div>
             </TopSection>
             <TopSection title={'history'}>
-                <div></div>
+                <div className="top-section-history">
+                    <div className="left">
+                        <p>2003/04</p>
+                        <p>2008/04</p>
+                        <p>2013/11</p>
+                        <p>2014/06</p>
+                    </div>
+                    <div className="right">
+                        <p>National Institute go Technology, Tokuyama College.</p>
+                        <p>Sony Digital Network Applications, inc.</p>
+                        <p>ELS Language Centers, Silicon Valley</p>
+                        <p>Fuller, inc.</p>
+                    </div>
+                </div>
+            </TopSection>
+            <TopSection title={'about'}>
+                <div className="top-section-about">
+                    <h5>nobux42</h5>
+                    <p>A front-end engineer</p>
+                    <div className="snses">
+                        <a href="" uk-icon="icon: facebook"></a>
+                        <a href="" uk-icon="icon: twitter"></a>
+                        <a href="" uk-icon="icon: github"></a>
+                    </div>
+                </div>
             </TopSection>
         </div>
     )

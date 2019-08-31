@@ -124,7 +124,7 @@
     }
 }
 
-@media (max-width: 639px) {
+@media (max-width: $breakpoint-xsmall-max) {
     .eyecatch {
         padding-top: 20px;
         height: 200px;
