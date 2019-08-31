@@ -2,12 +2,13 @@ import React, { useEffect } from 'react'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { Action } from 'typescript-fsa'
+import { RouteComponentProps, withRouter } from 'react-router';
 import { AppState } from '../store'
 import TopSection from './common/TopSection'
 import WorkCard from './ui-parts/WorkCard'
 import { IWorkState } from '../states/states';
 import { userActions } from '../actions/actions';
-import { RouteComponentProps, withRouter } from 'react-router';
+import OctetttrussSvg from './asset/OctetttrussSvg'
 
 interface TopActions {
     selecteWork: (work: IWorkState | null) => Action<IWorkState | null>;
@@ -68,14 +69,21 @@ const Top: React.FC<TopProps>  = (props: TopProps) => {
                     </div>
                 </div>
             </TopSection>
+            <div id="test-target" className="uk-height-medium">
+                <div>
+                    <div className="octett-parallax" uk-parallax="y: -180; easing: 0">
+                        <OctetttrussSvg/>
+                    </div>
+                </div>
+            </div>
             <TopSection title={'about'}>
                 <div className="top-section-about">
                     <h5>nobux42</h5>
                     <p>A front-end engineer</p>
                     <div className="snses">
+                        <a href="" uk-icon="icon: github"></a>
                         <a href="" uk-icon="icon: facebook"></a>
                         <a href="" uk-icon="icon: twitter"></a>
-                        <a href="" uk-icon="icon: github"></a>
                     </div>
                 </div>
             </TopSection>

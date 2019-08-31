@@ -4,6 +4,9 @@
     .uk-section:first-child {
         padding-top: 30px;
     }
+    .uk-section:last-child {
+        padding-top: 80px;
+    }
     .uk-section {
         padding-top: 30px;
     }
@@ -56,6 +59,22 @@
         .snses {
             .uk-icon {
                 margin: 0 8px;
+            }
+        }
+    }
+    #test-target {
+        overflow: hidden;
+        background: linear-gradient(135deg, $background, $black);
+        text-align: right;
+
+        .octett-parallax {
+            margin-top: -60px;
+            margin-right: -60px;
+
+            .octettruss-svg {
+                fill: $foreground;
+                width: 700px;
+                opacity: 0.5;
             }
         }
     }
