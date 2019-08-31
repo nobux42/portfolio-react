@@ -19,6 +19,8 @@ interface OwnProps {
 
 type TopProps = OwnProps & AppState & TopActions & RouteComponentProps;
 
+const summarySkills: string[] = ["React", "TypeScript", "JavaScript", "SCSS", "Android", "Java", "Wordpress", "Go", "Python", "AWS", "Firebase"]
+
 const Top: React.FC<TopProps>  = (props: TopProps) => {
     useEffect(() => {
         
@@ -38,7 +40,17 @@ const Top: React.FC<TopProps>  = (props: TopProps) => {
                 </div>
             </TopSection>
             <TopSection title={'skills'}>
-                <div></div>
+                <div className="top-section-skills">
+                    <p className="skills">
+                        {
+                            (() => {
+                                return summarySkills.map((skill, index) => 
+                                    (<span key={index} className="skill-large">{skill}</span>)
+                                ); 
+                            })()
+                        }
+                    </p>
+                </div>
             </TopSection>
             <TopSection title={'history'}>
                 <div></div>

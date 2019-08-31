@@ -1,7 +1,7 @@
 .workcard {
     a {
         text-decoration: none;
-        
+
         .uk-card {
             &:hover {
                 box-shadow: 0 14px 25px rgba(0, 0, 0, 0.5);
@@ -9,7 +9,7 @@
 
             .uk-card-title {
                 font-size: 1.3rem;
-                margin-bottom: 4px;
+                margin-bottom: 8px;
                 font-weight: 300;
                 letter-spacing: 1px;
             }
@@ -25,6 +25,7 @@
                     display: inline-block;
                     padding: 4px 16px;
                     margin-right: 8px;
+                    margin-bottom: 4px;
                     font-size: 0.8rem;
                     font-weight: 200;
                     border: 1px solid $foreground;

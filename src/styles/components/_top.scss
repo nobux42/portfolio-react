@@ -2,5 +2,24 @@
     .uk-section:first-child {
         padding-top: 30px;
     }
+
+    .top-section-skills {
+        .skills {
+            margin: 0 auto;
+            max-width: 480px;
+            text-align: center;
+
+            .skill-large {
+                display: inline-block;
+                padding: 4px 16px;
+                margin-right: 8px;
+                margin-bottom: 16px;
+                font-size: 1.0rem;
+                font-weight: 300;
+                border: 1px solid $foreground;
+                border-radius: 50px;
+            }
+        }
+    }
 }
 

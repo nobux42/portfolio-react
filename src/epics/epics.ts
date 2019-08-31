@@ -13,7 +13,7 @@ const firebaseGetWorksEpic: Epic =
         action$.pipe(
             ofType(firebaseActions.getWorks.started.type),
             mergeMap((action: Action<void>) => {
-                return firestore.collection('Works').get()
+                return firestore.collection('Works').orderBy("year", "desc").get()
             }),
             map((snapshot) => {
                 const works: IWork[] = []
