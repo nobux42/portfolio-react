@@ -3,7 +3,7 @@ import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { Action } from 'typescript-fsa'
 import { AppState } from '../store'
-import Section from './common/Section'
+import TopSection from './common/TopSection'
 import WorkCard from './ui-parts/WorkCard'
 import { IWorkState } from '../states/states';
 import { userActions } from '../actions/actions';
@@ -30,19 +30,19 @@ const Top: React.FC<TopProps>  = (props: TopProps) => {
 
     return (
         <div className="top">
-            <Section title={'Works'}>
+            <TopSection title={'works'}>
                 <div className="uk-child-width-1-3@m" uk-grid="">
                 {
                     props.firebase.works.map((work, index) => <WorkCard key={index} work={work}></WorkCard>)
                 }
                 </div>
-            </Section>
-            <Section title={'Sample'}>
+            </TopSection>
+            <TopSection title={'skills'}>
                 <div></div>
-            </Section>
-            <Section title={'Sample'}>
+            </TopSection>
+            <TopSection title={'history'}>
                 <div></div>
-            </Section>
+            </TopSection>
         </div>
     )
 }

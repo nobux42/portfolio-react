@@ -32,7 +32,15 @@ const WorkCard: React.FC<WorkCardProps> = (props: WorkCardProps) => {
                     </div>
                     <div className="uk-card-body">
                         <h3 className="uk-card-title">{props.work.title}</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                        <p className="skills">
+                        {
+                            (() => {
+                                return props.work.skills.map((skill, index) => 
+                                    (<span key={index} className="skill-large">{skill}</span>)
+                                ); 
+                            })()
+                        }
+                        </p>
                     </div>
                 </div>
             </Link>

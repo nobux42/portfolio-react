@@ -1,6 +1,4 @@
-.detail {
-    padding-bottom: 50px;
-
+.workcard {
     .skills {
         .skill-large {
             display: inline-block;
@@ -9,12 +7,6 @@
             font-size: 0.8rem;
             border: 1px solid $foreground;
             border-radius: 50px;
-        }
-    }
-    .images {
-        img {
-            width: 100%;
-            margin: 12px 0;
         }
     }
 }

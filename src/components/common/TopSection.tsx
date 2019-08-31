@@ -5,7 +5,7 @@ interface OwnProps {
     children: ReactNode;
 }   
 
-const Section: React.FC<OwnProps> = (props: OwnProps) => {
+const TopSection: React.FC<OwnProps> = (props: OwnProps) => {
     return (
         <>
             <section className="uk-section">
@@ -18,4 +18,4 @@ const Section: React.FC<OwnProps> = (props: OwnProps) => {
     )
 }
 
-export { Section as default }
+export { TopSection as default }

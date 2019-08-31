@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, ReactComponentElement } from 'react'
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { AppState } from '../store';
@@ -49,7 +49,19 @@ const Detail: React.FC<DetailProps> = (props: DetailProps) => {
         <div className="detail">
             <div className="uk-section">
                 <div className="uk-container">
-                    <p className="title">{ props.match ? props.match.params.id: "" }</p>
+                    <h1 className="title">{ props.match ? props.match.params.id: "" }</h1>
+                    <p className="skills">
+                    {
+                        (() => {
+                            if( props.user.selectedWork) {
+                                return props.user.selectedWork.skills.map((skill, index) => 
+                                    (<span key={index} className="skill-large">{skill}</span>)
+                                );
+                            }
+                            return 
+                        })()
+                    }
+                    </p>
                     <p className="description">
                     {
                         (() => {
