@@ -32,6 +32,7 @@ const WorkCard: React.FC<WorkCardProps> = (props: WorkCardProps) => {
                     </div>
                     <div className="uk-card-body">
                         <h3 className="uk-card-title">{props.work.title}</h3>
+                        <p className="year">{props.work.year}</p>
                         <p className="skills">
                         {
                             (() => {

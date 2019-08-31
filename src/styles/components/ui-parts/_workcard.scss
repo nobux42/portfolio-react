@@ -1,12 +1,36 @@
 .workcard {
-    .skills {
-        .skill-large {
-            display: inline-block;
-            padding: 4px 16px;
-            margin-right: 8px;
-            font-size: 0.8rem;
-            border: 1px solid $foreground;
-            border-radius: 50px;
+    a {
+        text-decoration: none;
+        
+        .uk-card {
+            &:hover {
+                box-shadow: 0 14px 25px rgba(0, 0, 0, 0.5);
+            }
+
+            .uk-card-title {
+                font-size: 1.3rem;
+                margin-bottom: 4px;
+                font-weight: 300;
+                letter-spacing: 1px;
+            }
+            .year {
+                margin: 0;
+                font-size: 0.8rem;
+                font-weight: 100;
+            }
+            .skills {
+                margin-top: 16px;
+
+                .skill-large {
+                    display: inline-block;
+                    padding: 4px 16px;
+                    margin-right: 8px;
+                    font-size: 0.8rem;
+                    font-weight: 200;
+                    border: 1px solid $foreground;
+                    border-radius: 50px;
+                }
+            }
         }
     }
 }

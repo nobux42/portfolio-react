@@ -18,6 +18,7 @@ const initialFirebaseState: FirebaseState = {
     title: "", 
     skills: [], 
     description: "", 
+    year: "",
     thumbnail: "", 
     thumbnailURL: "",
     images: [],

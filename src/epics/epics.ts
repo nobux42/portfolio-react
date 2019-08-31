@@ -22,6 +22,7 @@ const firebaseGetWorksEpic: Epic =
                         title: doc.data().title,
                         skills: doc.data().skills,
                         description: doc.data().description ? doc.data().description : "",
+                        year: doc.data().year,
                         thumbnail: doc.data().thumbnail,
                         images: doc.data().images,
                     })

@@ -7,6 +7,7 @@ export interface IWork {
   title: string
   skills: string[]
   description: string
+  year: string
   thumbnail: string
   images: string[]
 }
