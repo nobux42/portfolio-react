@@ -11,6 +11,7 @@ import Detail from './Detail'
 import { firebaseActions } from '../actions/actions';
 import { AppState } from '../store';
 import Footer from './Footer';
+import About from './About';
 
 interface AppActions {
     getWorks: () => Action<void>;
@@ -20,7 +21,7 @@ type AppProps = AppActions & AppState ;
 const routes = [
     { path: '/', name: 'Top', Component: Top },
     { path: '/detail/:id', name: 'Detail', Component: Detail },
-    { path: '/about', name: 'Detail', Component: Detail },
+    { path: '/about', name: 'Detail', Component: About },
 ]
 
 const App: React.FC<AppProps> = (props: AppProps) => {

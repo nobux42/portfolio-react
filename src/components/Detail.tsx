@@ -49,7 +49,8 @@ const Detail: React.FC<DetailProps> = (props: DetailProps) => {
         <div className="detail">
             <div className="uk-section">
                 <div className="uk-container">
-                    <h1 className="title">{ props.match ? props.match.params.id: "" }</h1>
+                    {/* <h1 className="title">{ props.match ? props.match.params.id: "" }</h1> */}
+                    <h1 className="title">{ props.user.selectedWork ? props.user.selectedWork.title : "" }</h1>
                     <p className="skills">
                     {
                         (() => {

@@ -69,7 +69,7 @@ const Top: React.FC<TopProps>  = (props: TopProps) => {
                     </div>
                 </div>
             </TopSection>
-            <div id="test-target" className="uk-height-medium">
+            <div id="parallax-target" className="uk-height-medium">
                 <div>
                     <div className="octett-parallax" uk-parallax="y: -180; easing: 0">
                         <OctetttrussSvg/>
