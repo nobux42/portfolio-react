@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import { BrowserRouter, Router, Route, Switch} from 'react-router-dom'
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Action } from 'typescript-fsa';
@@ -14,6 +14,15 @@ import { AppState } from '../store';
 import Footer from './Footer';
 import About from './About';
 
+import ReactGA from 'react-ga';
+import createBrowserHistory from 'history/createBrowserHistory';
+
+ReactGA.initialize('UA-107600889-2');
+const history = createBrowserHistory();
+history.listen(({ pathname }) => {
+    ReactGA.set({ page: pathname });
+    ReactGA.pageview(pathname);
+});
 
 interface AppActions {
     getWorks: () => Action<void>;
@@ -28,6 +37,9 @@ const routes = [
 
 const App: React.FC<AppProps> = (props: AppProps) => {
     useEffect(() => {
+        ReactGA.set({ page: '/' });
+        ReactGA.pageview('/');
+
         props.getWorks()
     }, [])
 
@@ -36,7 +48,7 @@ const App: React.FC<AppProps> = (props: AppProps) => {
             <Helmet>
                 
             </Helmet>
-            <Router>
+            <Router history={history}>
                 <Eyecatch/>
                 <Header/>
                 <main>
