@@ -1,11 +1,13 @@
 import React, { useEffect, ReactComponentElement } from 'react'
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { AppState } from '../store';
 import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import { Action } from 'typescript-fsa';
+import { Helmet } from 'react-helmet';
+import { AppState } from '../store';
 import { userActions, firebaseActions } from '../actions/actions';
 import { IWorkState } from '../states/states';
-import { Action } from 'typescript-fsa';
+
 
 interface DetailActions {
     selecteWork: (work: IWorkState | null) => Action<IWorkState | null>;
@@ -46,50 +48,55 @@ const Detail: React.FC<DetailProps> = (props: DetailProps) => {
     }, [props.firebase.isLoading])
     
     return (
-        <div className="detail">
-            <div className="uk-section">
-                <div className="uk-container">
-                    {/* <h1 className="title">{ props.match ? props.match.params.id: "" }</h1> */}
-                    <h1 className="title">{ props.user.selectedWork ? props.user.selectedWork.title : "" }</h1>
-                    <p className="skills">
-                    {
-                        (() => {
-                            if( props.user.selectedWork) {
-                                return props.user.selectedWork.skills.map((skill, index) => 
-                                    (<span key={index} className="skill-large">{skill}</span>)
-                                );
-                            }
-                            return 
-                        })()
-                    }
-                    </p>
-                    <p className="description">
-                    {
-                        (() => {
-                            if( props.user.selectedWork) {
-                                return props.user.selectedWork.description.split('<br>').map( (line, index) => 
-                                    (<React.Fragment key={index}><span>{line}</span><br/></React.Fragment>)
-                                );
-                            }
-                            return
-                        })()
-                    }
-                    </p>
-                    <div className="images">
-                    {
-                        (() => {
-                            if( props.user.selectedWork && props.user.selectedWork.imageURLs) {
-                                return props.user.selectedWork.imageURLs.map((url, index) => 
-                                    (<img key={index} src={url}/>)
-                                );
-                            }
-                            return
-                        })()
-                    }
+        <>
+            <Helmet>
+                <title>{ props.user.selectedWork ? props.user.selectedWork.title : "Detail" } | nobux42</title>
+            </Helmet>
+            <div className="detail">
+                <div className="uk-section">
+                    <div className="uk-container">
+                        {/* <h1 className="title">{ props.match ? props.match.params.id: "" }</h1> */}
+                        <h1 className="title">{ props.user.selectedWork ? props.user.selectedWork.title : "" }</h1>
+                        <p className="skills">
+                        {
+                            (() => {
+                                if( props.user.selectedWork) {
+                                    return props.user.selectedWork.skills.map((skill, index) => 
+                                        (<span key={index} className="skill-large">{skill}</span>)
+                                    );
+                                }
+                                return 
+                            })()
+                        }
+                        </p>
+                        <p className="description">
+                        {
+                            (() => {
+                                if( props.user.selectedWork) {
+                                    return props.user.selectedWork.description.split('<br>').map( (line, index) => 
+                                        (<React.Fragment key={index}><span>{line}</span><br/></React.Fragment>)
+                                    );
+                                }
+                                return
+                            })()
+                        }
+                        </p>
+                        <div className="images">
+                        {
+                            (() => {
+                                if( props.user.selectedWork && props.user.selectedWork.imageURLs) {
+                                    return props.user.selectedWork.imageURLs.map((url, index) => 
+                                        (<img key={index} src={url}/>)
+                                    );
+                                }
+                                return
+                            })()
+                        }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

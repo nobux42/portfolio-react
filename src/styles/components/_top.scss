@@ -64,6 +64,7 @@
     }
     #parallax-target {
         overflow: hidden;
+        height: 300px;
         background: linear-gradient(135deg, $background, $black);
         text-align: right;
 
@@ -91,6 +92,19 @@
             }
             .right {
                 padding-left: 20px;
+            }
+        }
+        #parallax-target {
+            height: 200px;
+            
+            .octett-parallax {
+                margin-top: -30px;
+                margin-right: -60px;
+    
+                .octettruss-svg {
+                    width: 500px;
+                    min-width: 500px;
+                }
             }
         }
     }
