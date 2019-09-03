@@ -85,9 +85,13 @@ const Detail: React.FC<DetailProps> = (props: DetailProps) => {
                         {
                             (() => {
                                 if( props.user.selectedWork && props.user.selectedWork.imageURLs) {
-                                    return props.user.selectedWork.imageURLs.map((url, index) => 
-                                        (<img key={index} src={url}/>)
-                                    );
+                                    return props.user.selectedWork.imageURLs.map((url, index) => {
+                                        if(!url.indexOf(".mpeg")) {
+                                            return (<img key={index} src={url}/>)
+                                        } else {
+                                            return (<video key={index} src={url} width="640" height="480" controls autoPlay muted></video>)
+                                        }
+                                    })
                                 }
                                 return
                             })()
