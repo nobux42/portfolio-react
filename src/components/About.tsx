@@ -27,9 +27,9 @@ const About: React.FC<AboutProps> = (props: AboutProps) => {
                         <h5>nobux42</h5>
                         <p>A front-end engineer</p>
                         <div className="snses">
-                            <a href="" uk-icon="icon: github"></a>
-                            <a href="" uk-icon="icon: facebook"></a>
-                            <a href="" uk-icon="icon: twitter"></a>
+                            <a href="https://github.com/nobux42" uk-icon="icon: github"></a>
+                            <a href="https://www.facebook.com/nobuhiro.inoue.90" uk-icon="icon: facebook"></a>
+                            <a href="https://twitter.com/nobux42" uk-icon="icon: twitter"></a>
                         </div>
                     </div>
                 </div>
