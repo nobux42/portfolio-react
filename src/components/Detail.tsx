@@ -1,4 +1,4 @@
-import React, { useEffect, ReactComponentElement } from 'react'
+import React, { useEffect } from 'react'
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
@@ -28,7 +28,7 @@ type DetailProps = OwnProps & DetailActions & RouteComponentProps<OwnRouteParams
 const Detail: React.FC<DetailProps> = (props: DetailProps) => {
     const selecteWork = () => {
         if( props.match && props.match.params.id ) {
-            let works = props.firebase.works.filter(work => work.title == props.match.params.id)
+            let works = props.firebase.works.filter(work => work.title === props.match.params.id)
             if( works.length > 0) {
                 console.log("selecteWork:", works[0])
                 props.selecteWork(works[0])
@@ -39,12 +39,16 @@ const Detail: React.FC<DetailProps> = (props: DetailProps) => {
     
     useEffect(() => {
         selecteWork()
+        // TODO:
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.location.pathname])
 
     useEffect(() => {
         if (!props.firebase.isLoading) {
             selecteWork()
         }
+        // TODO:
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.firebase.isLoading])
     
     return (
@@ -86,8 +90,8 @@ const Detail: React.FC<DetailProps> = (props: DetailProps) => {
                             (() => {
                                 if( props.user.selectedWork && props.user.selectedWork.imageURLs) {
                                     return props.user.selectedWork.imageURLs.map((url, index) => {
-                                        if(url.indexOf(".mp4") == -1) {
-                                            return (<img key={index} src={url}/>)
+                                        if(url.indexOf(".mp4") === -1) {
+                                            return (<img key={index} src={url} alt={index.toString()} />)
                                         } else {
                                             return (<video key={index} src={url} width="640" height="480" controls muted></video>)
                                         }

@@ -3,8 +3,12 @@
     text-align: center;
 
     .snses {
-        .uk-icon {
+        a.uk-icon {
             margin: 0 8px;
+            
+            span {
+                display: none;
+            }
         }
     }
 }

@@ -1,9 +1,9 @@
 
-import { AnyAction, Action, Success } from 'typescript-fsa';
-import { from, of, defer, forkJoin, ObservableInput, Observable } from 'rxjs';
-import { map, mergeMap, flatMap, toArray } from "rxjs/operators";
-import { combineEpics, Epic, createEpicMiddleware, ofType, ActionsObservable } from 'redux-observable';
-import { firebaseActions, IWork, userActions } from '../actions/actions'
+import { Action, Success } from 'typescript-fsa';
+import { of, defer, forkJoin, ObservableInput } from 'rxjs';
+import { map, mergeMap, flatMap } from "rxjs/operators";
+import { combineEpics, Epic, createEpicMiddleware, ofType } from 'redux-observable';
+import { firebaseActions, IWork } from '../actions/actions'
 import { firestore, storage } from '../firebase';
 import { IWorkState } from '../states/states';
 

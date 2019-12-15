@@ -1,11 +1,9 @@
-import React, { useEffect, ReactComponentElement } from 'react'
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import React from 'react'
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Action } from 'typescript-fsa';
 import { Helmet } from 'react-helmet';
 import { AppState } from '../store';
-import { userActions, firebaseActions } from '../actions/actions';
 import { IWorkState } from '../states/states';
 
 
@@ -15,7 +13,7 @@ interface OwnProps {
 
 type AboutProps = OwnProps;
 
-const About: React.FC<AboutProps> = (props: AboutProps) => {    
+const About: React.FC<AboutProps> = (props: AboutProps) => {
     return (
         <>
             <Helmet>
@@ -27,9 +25,9 @@ const About: React.FC<AboutProps> = (props: AboutProps) => {
                         <h5>nobux42</h5>
                         <p>A front-end engineer</p>
                         <div className="snses">
-                            <a href="https://github.com/nobux42" uk-icon="icon: github"></a>
-                            <a href="https://www.facebook.com/nobuhiro.inoue.90" uk-icon="icon: facebook"></a>
-                            <a href="https://twitter.com/nobux42" uk-icon="icon: twitter"></a>
+                            <a href="https://github.com/nobux42" uk-icon="icon: github"><span>github</span></a>
+                            <a href="https://www.facebook.com/nobuhiro.inoue.90" uk-icon="icon: facebook"><span>facebook</span></a>
+                            <a href="https://twitter.com/nobux42" uk-icon="icon: twitter"><span>twitter</span></a>
                         </div>
                     </div>
                 </div>

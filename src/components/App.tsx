@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter, Router, Route, Switch} from 'react-router-dom'
+import { Router, Route } from 'react-router-dom'
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Action } from 'typescript-fsa';
@@ -41,6 +41,9 @@ const App: React.FC<AppProps> = (props: AppProps) => {
         ReactGA.pageview('/');
 
         props.getWorks()
+
+        // TODO:
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

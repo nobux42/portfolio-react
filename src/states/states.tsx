@@ -50,8 +50,8 @@ export const firebaseReducer = reducerWithInitialState(initialFirebaseState)
     let stateTmp =  Object.assign(state);
     stateTmp.isLoading = false;
     stateTmp.works
-      .filter((work: IWorkState) => work.thumbnail == success.params)
-      .map((work: IWorkState) => { work.thumbnailURL = success.result })
+      .filter((work: IWorkState) => work.thumbnail === success.params)
+      .map((work: IWorkState) => work.thumbnailURL = success.result )
     
     return Object.assign({}, state, { stateTmp });
   })
@@ -60,8 +60,8 @@ export const firebaseReducer = reducerWithInitialState(initialFirebaseState)
       const title = success.params.title
       let stateTmp =  Object.assign(state);
       stateTmp.works
-        .filter((work: IWorkState) => work.title == title)
-        .map((work: IWorkState) => { work.imageURLs = success.result })
+        .filter((work: IWorkState) => work.title === title)
+        .map((work: IWorkState) => work.imageURLs = success.result )
       
       return Object.assign({}, state, { stateTmp });
     }

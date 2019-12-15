@@ -59,6 +59,10 @@
         .snses {
             .uk-icon {
                 margin: 0 8px;
+
+                span { 
+                    display: none;
+                }
             }
         }
     }

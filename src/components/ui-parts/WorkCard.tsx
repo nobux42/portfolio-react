@@ -3,8 +3,7 @@ import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { Action } from 'typescript-fsa'
 import { Link } from 'react-router-dom';
-import { userActions, IWork } from '../../actions/actions'
-import { storage } from '../../firebase'
+import { userActions } from '../../actions/actions'
 import { WorkHover } from '../../actions/actions'
 import { IWorkState } from '../../states/states'
 

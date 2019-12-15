@@ -1,11 +1,8 @@
 import React from 'react'
-import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
 import OctetttrussSvg from '../asset/OctetttrussSvg'
-import { WorkHover } from '../../actions/actions';
-import { IWorkState } from '../../states/states'
 import { AppState } from '../../store';
 
 
