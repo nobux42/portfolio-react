@@ -27,7 +27,7 @@ jobs:
     - name: run Lighthouse CI
       run: |
         npm install -g @lhci/cli@0.3.x
-        lhci autorun --config=./lighthouse/lighthouserc.json || echo "LHCI failed!"
+        lhci autorun --config=./.lighthouserc.json
     - name: deploy to Firebase Hosting
       run: |
         ./node_modules/.bin/firebase deploy --token=${{ secrets.FIREBASE_TOKEN }}
