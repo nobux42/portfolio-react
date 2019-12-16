@@ -35,7 +35,15 @@ $ npm install --save redux-observable
 $ npm start
 ```
 
-## Deploy 
+## Deploy By CI
+```
+$ git push origin m
+```
+- GitHub Actions
+  - https://github.com/nobux42/portfolio-react/actions
+
+
+## Deploy from local
 ```
 $ npm run build
 $ firebase deploy
