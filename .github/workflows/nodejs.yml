@@ -1,6 +1,6 @@
 name: Node CI
 
-on: 
+on:
   push:
     branches:
       - master
@@ -30,4 +30,5 @@ jobs:
         lhci autorun --config=./.lighthouserc.json
     - name: deploy to Firebase Hosting
       run: |
+        npm install -g firebase-tools
         ./node_modules/.bin/firebase deploy --token=${{ secrets.FIREBASE_TOKEN }}
