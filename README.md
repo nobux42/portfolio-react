@@ -1,3 +1,4 @@
+URL: https://nobux42.com/
 
 # My Portfolio Site with React
 - React
@@ -6,15 +7,17 @@
     - typescript-fsa & typescript-fsa-reducers
     - rxjs & redux-obserbable
 - Typescript
-- UIkit
+- SCSS
+- UIkit (https://getuikit.com/)
+- Storybook
 - Firebase
   - Hosting
   - Cloud FireStore
   - Cloud Storage
 
 ## Create Project
-```
-// create projeckut with typescript
+```sh
+# create projeckut with typescript
 $ create-react-app portfolio-react --typescript
 $ npm install --save-dev node-sass
 
