@@ -29,12 +29,42 @@ let work = {
     imageURLs: [],
 }
 
-export const WorkCard01 = () => (
+export const WorkCardDesktop = () => (
   <Provider store={store}>
     <Router history={history}>
-      <div className="uk-child-width-1-3@m" uk-grid="">
-        <WorkCard key={1} work={work}></WorkCard>
+      <div className="uk-section">
+        <div className="uk-container">
+          <div className="uk-child-width-1-3@m" uk-grid="">
+            <WorkCard key={1} work={work}></WorkCard>
+            <WorkCard key={2} work={work}></WorkCard>
+            <WorkCard key={3} work={work}></WorkCard>
+          </div>
+        </div>
       </div>
     </Router>
   </Provider>
-  )
+)
+
+export const WorkCardMobile = () => (
+  <Provider store={store}>
+    <Router history={history}>
+      <div style={{width: "480px;"}}>
+        <div className="uk-section">
+          <div className="uk-container">
+            <div className="uk-child-width-1-3@m" uk-grid="">
+              <WorkCard key={1} work={work}></WorkCard>
+              <WorkCard key={2} work={work}></WorkCard>
+              <WorkCard key={3} work={work}></WorkCard>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Router>
+  </Provider>
+)
+WorkCardMobile.story = {
+  parameters: {
+    viewport: { defaultViewport: 'iphonex' },
+  },
+};
+
