@@ -1,18 +1,18 @@
 import { Success } from 'typescript-fsa';
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
-import { firebaseActions, userActions, IWork, WorkHover } from '../actions/actions';
+import { firebaseActions, userActions, IWork, IWorkHover } from '../actions/actions';
 
 export interface IWorkState extends IWork {
     thumbnailURL: string
     imageURLs: string[]
 }
 
-export interface FirebaseState {
+export interface IFirebaseState {
     isLoading: boolean
     works: IWorkState[]
 }
 
-const initialFirebaseState: FirebaseState = {
+const initialFirebaseState: IFirebaseState = {
     isLoading: false,
     works: [{
         title: "",
@@ -27,13 +27,13 @@ const initialFirebaseState: FirebaseState = {
 };
 
 export const firebaseReducer = reducerWithInitialState(initialFirebaseState)
-    .case(firebaseActions.getWorks.started, (state: FirebaseState) => {
+    .case(firebaseActions.getWorks.started, (state: IFirebaseState) => {
         return Object.assign({}, state, { isLoading: true });
     })
-    .case(firebaseActions.getWorks.done, (state: FirebaseState, success: Success<void, IWork[]>) => {
+    .case(firebaseActions.getWorks.done, (state: IFirebaseState, success: Success<void, IWork[]>) => {
         return Object.assign({}, state, { works: success.result });
     })
-    .case(firebaseActions.getThumbnail.done, (state: FirebaseState, success: Success<string, string>) => {
+    .case(firebaseActions.getThumbnail.done, (state: IFirebaseState, success: Success<string, string>) => {
         let stateTmp = Object.assign(state);
         stateTmp.isLoading = false;
         stateTmp.works
@@ -42,7 +42,7 @@ export const firebaseReducer = reducerWithInitialState(initialFirebaseState)
 
         return Object.assign({}, state, { stateTmp });
     })
-    .case(firebaseActions.getDetailImages.done, (state: FirebaseState, success: Success<IWorkState | null, string[]>) => {
+    .case(firebaseActions.getDetailImages.done, (state: IFirebaseState, success: Success<IWorkState | null, string[]>) => {
         if (success.params !== null) {
             const title = success.params.title
             let stateTmp = Object.assign(state);

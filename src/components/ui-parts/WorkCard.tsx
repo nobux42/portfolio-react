@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Action } from 'typescript-fsa'
 import { Link } from 'react-router-dom';
 import { userActions } from '../../actions/actions'
-import { WorkHover } from '../../actions/actions'
+import { IWorkHover } from '../../actions/actions'
 import { IWorkState } from '../../states/firebase'
 
 
@@ -14,7 +14,7 @@ interface OwnProps {
 }
 
 interface WorkCardActions {
-    hoverWork: (workHover: WorkHover) => Action<WorkHover>
+    hoverWork: (workHover: IWorkHover) => Action<IWorkHover>
 }
 
 type WorkCardProps = OwnProps & WorkCardActions;
@@ -48,9 +48,9 @@ const WorkCard: React.FC<WorkCardProps> = (props: WorkCardProps) => {
     )
 }
 
-function mapDispatchToProps(dispatch: Dispatch<Action<WorkHover>>) {
+function mapDispatchToProps(dispatch: Dispatch<Action<IWorkHover>>) {
     return {
-      hoverWork: (workHover: WorkHover) => dispatch(userActions.hoverWork(workHover)),
+      hoverWork: (workHover: IWorkHover) => dispatch(userActions.hoverWork(workHover)),
     };
 }
   

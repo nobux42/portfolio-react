@@ -12,7 +12,7 @@ export interface IWork {
   images: string[]
 }
 
-export interface WorkHover {
+export interface IWorkHover {
   hovered: boolean
   work: IWorkState | null
 }
@@ -24,6 +24,6 @@ export const firebaseActions = {
 }
 
 export const userActions = {
-  hoverWork: actionCreator<WorkHover>('ACTIONS_USER_HOVER_WORK'),
+  hoverWork: actionCreator<IWorkHover>('ACTIONS_USER_HOVER_WORK'),
   selecteWork: actionCreator<IWorkState | null>('ACTIONS_USER_SELECT_WORK'),
 }
