@@ -1,6 +1,6 @@
 import { Success } from 'typescript-fsa';
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
-import { firebaseActions, userActions, IWork, IWorkHover } from '../actions/actions';
+import { userActions, IWorkHover } from '../actions/actions';
 import { IWorkState } from './firebase';
 
 export interface IUserState {
@@ -14,7 +14,7 @@ const initialUserState: IUserState = {
         work: null,
     },
     selectedWork: null
-};  
+};
 
 export const userReducer = reducerWithInitialState(initialUserState)
   .case(userActions.hoverWork, (state: IUserState, workHover: IWorkHover) => {

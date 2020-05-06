@@ -1,6 +1,6 @@
 import { Success } from 'typescript-fsa';
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
-import { firebaseActions, userActions, IWork, IWorkHover } from '../actions/actions';
+import { firebaseActions, IWork } from '../actions/actions';
 
 export interface IWorkState extends IWork {
     thumbnailURL: string

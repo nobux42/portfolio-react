@@ -1,7 +1,19 @@
 import React from 'react';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import { Action } from 'typescript-fsa';
 import { Link } from 'react-router-dom';
+import { IAuthState } from "../states/auth";
+import { AppState } from "../store";
+import { auth } from '../firebase';
 
-const Header = () => {
+interface OwnProps {
+    auth: IAuthState
+}
+
+type HeaderProps = OwnProps;
+
+const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
     return (
         <div className="header">
             <header id="header">
@@ -14,6 +26,11 @@ const Header = () => {
                     <div className="uk-navbar-right">
                         <ul className="uk-navbar-nav uk-visible@s">
                             <li><Link to="/about">about</Link></li>
+                            {props.auth.user ? (
+                                <li><a className="" onClick={(event) => auth.signOut()}>signout</a></li>
+                            ) : (
+                                <li><Link className="" to="/signin">signin</Link></li>
+                            )}     
                         </ul>
                         <span className="uk-navbar-toggle uk-hidden@s" uk-toggle="target: #sidenav" uk-navbar-toggle-icon=""></span>
                     </div>
@@ -25,6 +42,11 @@ const Header = () => {
                     <button className="uk-offcanvas-close" type="button" uk-close=""></button>
                     <ul className="uk-nav">
                         <li><Link className="" to="/about">about</Link></li>
+                        {props.auth.user ? (
+                            <li><a className="" onClick={(event) => auth.signOut()}>signout</a></li>
+                        ) : (
+                            <li><Link className="" to="/signin">signin</Link></li>
+                        )}     
                     </ul>
                 </div>
             </div>
@@ -32,4 +54,14 @@ const Header = () => {
     )
 }
 
-export { Header as default }
+function mapDispatchToProps(dispatch: Dispatch<Action<void>>) {
+    return {
+        
+    }
+}
+  
+function mapStateToProps(state: AppState) {
+    return Object.assign({}, state);
+}
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

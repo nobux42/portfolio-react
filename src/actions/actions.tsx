@@ -17,6 +17,10 @@ export interface IWorkHover {
   work: IWorkState | null
 }
 
+export const authActions = {
+  setUser: actionCreator<firebase.User>('ACTIONS_AUTH_SET_USER')
+}
+
 export const firebaseActions = {
   getWorks: actionCreator.async<void, IWork[]>('ACTIONS_FIREBASE_GET_WORKS'),
   getThumbnail: actionCreator.async<string, string>('ACTIONS_FIREBASE_GET_THUMBNAIL'),

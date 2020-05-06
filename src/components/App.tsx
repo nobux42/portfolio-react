@@ -9,10 +9,12 @@ import Header from './Header'
 import Eyecatch from './top/Eyecatch'
 import Top from './Top'
 import Detail from './Detail'
-import { firebaseActions } from '../actions/actions';
+import { authActions, firebaseActions } from '../actions/actions';
 import { AppState } from '../store';
+import { auth } from '../firebase'
 import Footer from './Footer';
 import About from './About';
+import SignIn from './SignIn';
 
 import ReactGA from 'react-ga';
 import createBrowserHistory from 'history/createBrowserHistory';
@@ -25,6 +27,7 @@ history.listen(({ pathname }) => {
 });
 
 interface AppActions {
+    setUser: (user: firebase.User) => Action<firebase.User>;
     getWorks: () => Action<void>;
 }
 type AppProps = AppActions & AppState ;
@@ -32,7 +35,8 @@ type AppProps = AppActions & AppState ;
 const routes = [
     { path: '/', name: 'Top', Component: Top },
     { path: '/detail/:id', name: 'Detail', Component: Detail },
-    { path: '/about', name: 'Detail', Component: About },
+    { path: '/about', name: 'About', Component: About },
+    { path: '/signin', name: 'SignIn', Component: SignIn },
 ]
 
 const App: React.FC<AppProps> = (props: AppProps) => {
@@ -42,15 +46,18 @@ const App: React.FC<AppProps> = (props: AppProps) => {
 
         props.getWorks()
 
+        auth.onAuthStateChanged((userAuth: any) => {
+            console.log("auth: ")
+            console.dir(userAuth)
+            props.setUser(userAuth);
+        });
         // TODO:
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
-            <Helmet>
-                
-            </Helmet>
+            <Helmet></Helmet>
             <Router history={history}>
                 <Eyecatch/>
                 <Header/>
@@ -73,13 +80,14 @@ const App: React.FC<AppProps> = (props: AppProps) => {
                     ))}
                 </main>
                 <Footer/>
-        </Router>
+            </Router>
         </>
     )
 }
 
-function mapDispatchToProps(dispatch: Dispatch<Action<void>>) {
+function mapDispatchToProps(dispatch: Dispatch<Action<void | firebase.User>>) {
     return {
+      setUser: (user: firebase.User) => dispatch(authActions.setUser(user)),
       getWorks: () => dispatch(firebaseActions.getWorks.started()),
     }
 }
