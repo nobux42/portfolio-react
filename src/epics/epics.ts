@@ -5,7 +5,7 @@ import { map, mergeMap, flatMap } from "rxjs/operators";
 import { combineEpics, Epic, createEpicMiddleware, ofType } from 'redux-observable';
 import { firebaseActions, IWork } from '../actions/actions'
 import { firestore, storage } from '../firebase';
-import { IWorkState } from '../states/states';
+import { IWorkState } from '../states/firebase';
 
 
 const firebaseGetWorksEpic: Epic =

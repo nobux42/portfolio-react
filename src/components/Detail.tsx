@@ -6,7 +6,7 @@ import { Action } from 'typescript-fsa';
 import { Helmet } from 'react-helmet';
 import { AppState } from '../store';
 import { userActions, firebaseActions } from '../actions/actions';
-import { IWorkState } from '../states/states';
+import { IWorkState } from '../states/firebase';
 
 
 interface DetailActions {
@@ -110,7 +110,7 @@ const Detail: React.FC<DetailProps> = (props: DetailProps) => {
 
 function mapDispatchToProps(dispatch: Dispatch<Action<IWorkState | null>>) {
     return {
-        selecteWork: (work: IWorkState | null) => dispatch(userActions.SelecteWork(work)),
+        selecteWork: (work: IWorkState | null) => dispatch(userActions.selecteWork(work)),
         getDetailImages: (work: IWorkState | null) => dispatch(firebaseActions.getDetailImages.started(work)),
     }
 }

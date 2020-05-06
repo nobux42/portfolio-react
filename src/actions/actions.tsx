@@ -1,5 +1,5 @@
 import actionCreatorFactory from 'typescript-fsa'
-import { IWorkState } from '../states/states'
+import { IWorkState } from '../states/firebase'
 
 const actionCreator = actionCreatorFactory();
 
@@ -25,5 +25,5 @@ export const firebaseActions = {
 
 export const userActions = {
   hoverWork: actionCreator<WorkHover>('ACTIONS_USER_HOVER_WORK'),
-  SelecteWork: actionCreator<IWorkState | null>('ACTIONS_USER_SELECT_WORK'),
+  selecteWork: actionCreator<IWorkState | null>('ACTIONS_USER_SELECT_WORK'),
 }

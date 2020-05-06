@@ -5,7 +5,7 @@ import { Action } from 'typescript-fsa'
 import { Link } from 'react-router-dom';
 import { userActions } from '../../actions/actions'
 import { WorkHover } from '../../actions/actions'
-import { IWorkState } from '../../states/states'
+import { IWorkState } from '../../states/firebase'
 
 
 interface OwnProps {

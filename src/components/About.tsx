@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Action } from 'typescript-fsa';
 import { Helmet } from 'react-helmet';
 import { AppState } from '../store';
-import { IWorkState } from '../states/states';
+import { IWorkState } from '../states/firebase';
 
 
 interface OwnProps {
