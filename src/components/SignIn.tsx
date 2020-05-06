@@ -49,36 +49,36 @@ const SignIn: React.FC<SignInProps>  = (props: SignInProps) => {
                     <div className="uk-container">
                         <h5>SignIn</h5>
                         <div className="border">
-                            {error !== null && <div className="py-4 bg-red-600 w-full text-white text-center mb-3">{error}</div>}
                             <form className="">
                                 <div className="uk-margin">
                                     <label htmlFor="userEmail" className="block">
-                                        Email:
+                                        Email
                                     </label>
                                     <input
                                         type="email"
                                         className="uk-input"
                                         name="userEmail"
                                         value={email}
-                                        placeholder="E.g: faruq123@gmail.com"
+                                        placeholder="aaa@bbb.ccc"
                                         id="userEmail"
                                         onChange={(event) => onChangeHandler(event)}
                                     />
                                 </div>
                                 <div className="uk-margin">
                                     <label htmlFor="userPassword" className="block">
-                                        Password:
+                                        Password
                                     </label>
                                     <input
                                         type="password"
                                         className="uk-input"
                                         name="userPassword"
                                         value={password}
-                                        placeholder="Your Password"
+                                        placeholder="your password"
                                         id="userPassword"
                                         onChange={(event) => onChangeHandler(event)}
                                     />
                                 </div>
+                                {error !== null && <div className="form-error-text">{error}</div>}
                                 <button className="uk-button" onClick={(event) => { signInWithEmailAndPasswordHandler(event, email, password) }}>
                                     Sign in
                                 </button>
