@@ -27,9 +27,9 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
                         <ul className="uk-navbar-nav uk-visible@s">
                             <li><Link to="/about">about</Link></li>
                             {props.auth.user ? (
-                                <li><a className="" onClick={(event) => auth.signOut()}>signout</a></li>
+                                <li><Link to="/" onClick={(event) => auth.signOut()}>signout</Link></li>
                             ) : (
-                                <li><Link className="" to="/signin">signin</Link></li>
+                                <li><Link to="/signin">signin</Link></li>
                             )}     
                         </ul>
                         <span className="uk-navbar-toggle uk-hidden@s" uk-toggle="target: #sidenav" uk-navbar-toggle-icon=""></span>
@@ -41,11 +41,11 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
                 <div className="uk-offcanvas-bar">
                     <button className="uk-offcanvas-close" type="button" uk-close=""></button>
                     <ul className="uk-nav">
-                        <li><Link className="" to="/about">about</Link></li>
+                        <li><Link to="/about">about</Link></li>
                         {props.auth.user ? (
-                            <li><a className="" onClick={(event) => auth.signOut()}>signout</a></li>
+                            <li><Link to="/" onClick={(event) => auth.signOut()}>signout</Link></li>
                         ) : (
-                            <li><Link className="" to="/signin">signin</Link></li>
+                            <li><Link to="/signin">signin</Link></li>
                         )}     
                     </ul>
                 </div>

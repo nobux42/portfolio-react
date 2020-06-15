@@ -39,7 +39,7 @@ const routes = [
     { path: '/signin', name: 'SignIn', Component: SignIn },
 ]
 
-const App: React.FC<AppProps> = (props: AppProps) => {
+const App: React.FC<AppProps> = (props: AppProps) => {    
     useEffect(() => {
         ReactGA.set({ page: '/' });
         ReactGA.pageview('/');
@@ -47,8 +47,6 @@ const App: React.FC<AppProps> = (props: AppProps) => {
         props.getWorks()
 
         auth.onAuthStateChanged((userAuth: any) => {
-            console.log("auth: ")
-            console.dir(userAuth)
             props.setUser(userAuth);
         });
         // TODO:
