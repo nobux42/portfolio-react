@@ -17,7 +17,7 @@ import About from './About';
 import SignIn from './SignIn';
 
 import ReactGA from 'react-ga';
-import createBrowserHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history'
 
 ReactGA.initialize('UA-107600889-2');
 const history = createBrowserHistory();
