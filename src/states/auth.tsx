@@ -1,7 +1,7 @@
 import { Success } from 'typescript-fsa';
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
 import { authActions } from '../actions/actions';
-import { IWorkState } from './firebase';
+import { IWorkState } from './work';
 
 export interface IAuthState {
     user: string | null

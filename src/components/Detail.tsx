@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { Action } from 'typescript-fsa';
 import { Helmet } from 'react-helmet';
 import { AppState } from '../store';
-import { userActions, firebaseActions } from '../actions/actions';
-import { IWorkState } from '../states/firebase';
+import { userActions, workActions } from '../actions/actions';
+import { IWorkState } from '../states/work';
 
 
 interface DetailActions {
@@ -111,7 +111,7 @@ const Detail: React.FC<DetailProps> = (props: DetailProps) => {
 function mapDispatchToProps(dispatch: Dispatch<Action<IWorkState | null>>) {
     return {
         selecteWork: (work: IWorkState | null) => dispatch(userActions.selecteWork(work)),
-        getDetailImages: (work: IWorkState | null) => dispatch(firebaseActions.getDetailImages.started(work)),
+        getDetailImages: (work: IWorkState | null) => dispatch(workActions.getDetailImages.started(work)),
     }
 }
 

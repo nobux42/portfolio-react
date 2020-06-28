@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { authReducer, IAuthState} from './states/auth'
-import { firebaseReducer, IFirebaseState} from './states/firebase'
+import { firebaseReducer, IFirebaseState} from './states/work'
 import { userReducer, IUserState} from './states/user'
 import { epicMiddleware, rootEpic} from './epics/epics'
 import { createLogger } from 'redux-logger'

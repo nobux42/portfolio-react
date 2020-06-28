@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 import { AppState } from '../store'
 import TopSection from './common/TopSection'
 import WorkCard from './ui-parts/WorkCard'
-import { IWorkState } from '../states/firebase';
+import { IWorkState } from '../states/work';
 import { userActions } from '../actions/actions';
 import OctetttrussSvg from './asset/OctetttrussSvg'
 

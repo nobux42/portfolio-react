@@ -9,7 +9,7 @@ import Header from './Header'
 import Eyecatch from './top/Eyecatch'
 import Top from './Top'
 import Detail from './Detail'
-import { authActions, firebaseActions } from '../actions/actions';
+import { authActions, workActions } from '../actions/actions';
 import { AppState } from '../store';
 import { auth } from '../firebase'
 import Footer from './Footer';
@@ -86,7 +86,7 @@ const App: React.FC<AppProps> = (props: AppProps) => {
 function mapDispatchToProps(dispatch: Dispatch<Action<void | firebase.User>>) {
     return {
       setUser: (user: firebase.User) => dispatch(authActions.setUser(user)),
-      getWorks: () => dispatch(firebaseActions.getWorks.started()),
+      getWorks: () => dispatch(workActions.getWorks.started()),
     }
 }
   

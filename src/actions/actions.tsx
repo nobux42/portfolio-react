@@ -1,5 +1,5 @@
 import actionCreatorFactory from 'typescript-fsa'
-import { IWorkState } from '../states/firebase'
+import { IWorkState } from '../states/work'
 
 const actionCreator = actionCreatorFactory();
 
@@ -21,7 +21,7 @@ export const authActions = {
   setUser: actionCreator<firebase.User>('ACTIONS_AUTH_SET_USER')
 }
 
-export const firebaseActions = {
+export const workActions = {
   getWorks: actionCreator.async<void, IWork[]>('ACTIONS_FIREBASE_GET_WORKS'),
   getThumbnail: actionCreator.async<string, string>('ACTIONS_FIREBASE_GET_THUMBNAIL'),
   getDetailImages: actionCreator.async<IWorkState | null, string[]>('ACTIONS_USER_GET_DETAILIMAGES'),
