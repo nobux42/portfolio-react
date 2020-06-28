@@ -1,7 +1,7 @@
 import { Success } from 'typescript-fsa';
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
 import { authActions } from '../actions/actions';
-import { IWorkState } from './work';
+import { IWorkItemState } from './work';
 
 export interface IAuthState {
     user: string | null

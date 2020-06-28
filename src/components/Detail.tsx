@@ -6,12 +6,12 @@ import { Action } from 'typescript-fsa';
 import { Helmet } from 'react-helmet';
 import { AppState } from '../store';
 import { userActions, workActions } from '../actions/actions';
-import { IWorkState } from '../states/work';
+import { IWorkItemState } from '../states/work';
 
 
 interface DetailActions {
-    selecteWork: (work: IWorkState | null) => Action<IWorkState | null>;
-    getDetailImages: (work: IWorkState | null) => Action<IWorkState | null>;
+    selecteWork: (work: IWorkItemState | null) => Action<IWorkItemState | null>;
+    getDetailImages: (work: IWorkItemState | null) => Action<IWorkItemState | null>;
     
 }
 
@@ -28,7 +28,7 @@ type DetailProps = OwnProps & DetailActions & RouteComponentProps<OwnRouteParams
 const Detail: React.FC<DetailProps> = (props: DetailProps) => {
     const selecteWork = () => {
         if( props.match && props.match.params.id ) {
-            let works = props.firebase.works.filter(work => work.title === props.match.params.id)
+            let works = props.work.workItems.filter(work => work.title === props.match.params.id)
             if( works.length > 0) {
                 console.log("selecteWork:", works[0])
                 props.selecteWork(works[0])
@@ -44,12 +44,12 @@ const Detail: React.FC<DetailProps> = (props: DetailProps) => {
     }, [props.location.pathname])
 
     useEffect(() => {
-        if (!props.firebase.isLoading) {
+        if (!props.work.isLoading) {
             selecteWork()
         }
         // TODO:
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.firebase.isLoading])
+    }, [props.work.isLoading])
     
     return (
         <>
@@ -108,10 +108,10 @@ const Detail: React.FC<DetailProps> = (props: DetailProps) => {
     )
 }
 
-function mapDispatchToProps(dispatch: Dispatch<Action<IWorkState | null>>) {
+function mapDispatchToProps(dispatch: Dispatch<Action<IWorkItemState | null>>) {
     return {
-        selecteWork: (work: IWorkState | null) => dispatch(userActions.selecteWork(work)),
-        getDetailImages: (work: IWorkState | null) => dispatch(workActions.getDetailImages.started(work)),
+        selecteWork: (work: IWorkItemState | null) => dispatch(userActions.selecteWork(work)),
+        getDetailImages: (work: IWorkItemState | null) => dispatch(workActions.getDetailImages.started(work)),
     }
 }
 

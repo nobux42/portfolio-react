@@ -3,9 +3,9 @@ import { Action, Success } from 'typescript-fsa';
 import { of, defer, forkJoin, ObservableInput } from 'rxjs';
 import { map, mergeMap, flatMap } from "rxjs/operators";
 import { combineEpics, Epic, createEpicMiddleware, ofType } from 'redux-observable';
-import { workActions, IWork } from '../actions/actions'
+import { workActions, IWorkItem } from '../actions/actions'
 import { firestore, storage } from '../firebase';
-import { IWorkState } from '../states/work';
+import { IWorkItemState } from '../states/work';
 
 
 const firebaseGetWorksEpic: Epic =
@@ -16,7 +16,7 @@ const firebaseGetWorksEpic: Epic =
                 return firestore.collection('Works').orderBy("year", "desc").get()
             }),
             map((snapshot) => {
-                const works: IWork[] = []
+                const works: IWorkItem[] = []
                 snapshot.forEach((doc) => {
                     works.push({
                         title: doc.data().title,
@@ -35,10 +35,10 @@ const firebaseGetWorksDoneEpic: Epic =
     action$ => 
         action$.pipe(
             ofType(workActions.getWorks.done.type),
-            flatMap((action: Action<Success<void, IWork[]>>) => {
+            flatMap((action: Action<Success<void, IWorkItem[]>>) => {
                 return action.payload.result
             }),
-            map((work: IWork) => {
+            map((work: IWorkItem) => {
                 return workActions.getThumbnail.started(work.thumbnail)
             })
         )
@@ -86,7 +86,7 @@ const userGetDetailImages: Epic =
     action$ => 
         action$.pipe(
             ofType(workActions.getDetailImages.started.type),
-            mergeMap((action: Action<IWorkState | null>) => forkJoin(
+            mergeMap((action: Action<IWorkItemState | null>) => forkJoin(
                 of(action),
                 defer(() => { 
                     if(action.payload != null) {
@@ -101,7 +101,7 @@ const userGetDetailImages: Epic =
                     return []
                 })
             )),
-            map(([action, images]: [Action<IWorkState | null>, string[]]) => {
+            map(([action, images]: [Action<IWorkItemState | null>, string[]]) => {
                 console.log("userGetDetailImages:", images)
                 return workActions.getDetailImages.done({ params: action.payload, result: images })
             })

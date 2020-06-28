@@ -22,8 +22,8 @@ const Eyecatch: React.FC<EycatchProps> = (props: EycatchProps) => {
             <CSSTransition in={!!props.user.workHover.hovered} timeout={300}  classNames="cover">
                 {
                     (() => {
-                        if(props.user.workHover.work) {
-                            return <div className="cover uk-background-cover" data-src={props.user.workHover.work.thumbnailURL} uk-img=""></div>
+                        if(props.user.workHover.workItem) {
+                            return <div className="cover uk-background-cover" data-src={props.user.workHover.workItem.thumbnailURL} uk-img=""></div>
                         }
                         return <></>
                     })()

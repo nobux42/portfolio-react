@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Action } from 'typescript-fsa';
 import { Helmet } from 'react-helmet';
 import { AppState } from '../store';
-import { IWorkState } from '../states/work';
+import { IWorkItemState } from '../states/work';
 
 
 interface OwnProps {
@@ -36,7 +36,7 @@ const About: React.FC<AboutProps> = (props: AboutProps) => {
     )
 }
 
-function mapDispatchToProps(dispatch: Dispatch<Action<IWorkState | null>>) {
+function mapDispatchToProps(dispatch: Dispatch<Action<IWorkItemState | null>>) {
     return {
        
     }

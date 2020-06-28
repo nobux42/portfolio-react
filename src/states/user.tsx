@@ -1,26 +1,26 @@
 import { Success } from 'typescript-fsa';
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
-import { userActions, IWorkHover } from '../actions/actions';
-import { IWorkState } from './work';
+import { userActions, IWorkItemHover } from '../actions/actions';
+import { IWorkItemState } from './work';
 
 export interface IUserState {
-    workHover: IWorkHover;
-    selectedWork: IWorkState | null;
+    workHover: IWorkItemHover;
+    selectedWork: IWorkItemState | null;
 }
   
 const initialUserState: IUserState = {
     workHover: { 
         hovered: false,
-        work: null,
+        workItem: null,
     },
     selectedWork: null
 };
 
 export const userReducer = reducerWithInitialState(initialUserState)
-  .case(userActions.hoverWork, (state: IUserState, workHover: IWorkHover) => {
+  .case(userActions.hoverWork, (state: IUserState, workHover: IWorkItemHover) => {
     return Object.assign({}, state, { workHover: workHover });
   })
-  .case(userActions.selecteWork, (state: IUserState, work: IWorkState | null) => {
+  .case(userActions.selecteWork, (state: IUserState, work: IWorkItemState | null) => {
     return Object.assign({}, state, { selectedWork: work });
   })
   

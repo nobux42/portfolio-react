@@ -1,9 +1,9 @@
 import actionCreatorFactory from 'typescript-fsa'
-import { IWorkState } from '../states/work'
+import { IWorkItemState } from '../states/work'
 
 const actionCreator = actionCreatorFactory();
 
-export interface IWork {
+export interface IWorkItem {
   title: string
   skills: string[]
   description: string
@@ -12,9 +12,9 @@ export interface IWork {
   images: string[]
 }
 
-export interface IWorkHover {
+export interface IWorkItemHover {
   hovered: boolean
-  work: IWorkState | null
+  workItem: IWorkItemState | null
 }
 
 export const authActions = {
@@ -22,12 +22,12 @@ export const authActions = {
 }
 
 export const workActions = {
-  getWorks: actionCreator.async<void, IWork[]>('ACTIONS_FIREBASE_GET_WORKS'),
+  getWorks: actionCreator.async<void, IWorkItem[]>('ACTIONS_FIREBASE_GET_WORKS'),
   getThumbnail: actionCreator.async<string, string>('ACTIONS_FIREBASE_GET_THUMBNAIL'),
-  getDetailImages: actionCreator.async<IWorkState | null, string[]>('ACTIONS_USER_GET_DETAILIMAGES'),
+  getDetailImages: actionCreator.async<IWorkItemState | null, string[]>('ACTIONS_USER_GET_DETAILIMAGES'),
 }
 
 export const userActions = {
-  hoverWork: actionCreator<IWorkHover>('ACTIONS_USER_HOVER_WORK'),
-  selecteWork: actionCreator<IWorkState | null>('ACTIONS_USER_SELECT_WORK'),
+  hoverWork: actionCreator<IWorkItemHover>('ACTIONS_USER_HOVER_WORK'),
+  selecteWork: actionCreator<IWorkItemState | null>('ACTIONS_USER_SELECT_WORK'),
 }

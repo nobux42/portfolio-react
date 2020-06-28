@@ -1,20 +1,20 @@
 import { Success } from 'typescript-fsa';
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
-import { workActions, IWork } from '../actions/actions';
+import { workActions, IWorkItem } from '../actions/actions';
 
-export interface IWorkState extends IWork {
+export interface IWorkItemState extends IWorkItem {
     thumbnailURL: string
     imageURLs: string[]
 }
 
-export interface IFirebaseState {
+export interface IWrokState {
     isLoading: boolean
-    works: IWorkState[]
+    workItems: IWorkItemState[]
 }
 
-const initialFirebaseState: IFirebaseState = {
+const initialWorkState: IWrokState = {
     isLoading: false,
-    works: [{
+    workItems: [{
         title: "",
         skills: [],
         description: "",
@@ -26,29 +26,29 @@ const initialFirebaseState: IFirebaseState = {
     }]
 };
 
-export const firebaseReducer = reducerWithInitialState(initialFirebaseState)
-    .case(workActions.getWorks.started, (state: IFirebaseState) => {
+export const workReducer = reducerWithInitialState(initialWorkState)
+    .case(workActions.getWorks.started, (state: IWrokState) => {
         return Object.assign({}, state, { isLoading: true });
     })
-    .case(workActions.getWorks.done, (state: IFirebaseState, success: Success<void, IWork[]>) => {
-        return Object.assign({}, state, { works: success.result });
+    .case(workActions.getWorks.done, (state: IWrokState, success: Success<void, IWorkItem[]>) => {
+        return Object.assign({}, state, { workItems: success.result });
     })
-    .case(workActions.getThumbnail.done, (state: IFirebaseState, success: Success<string, string>) => {
+    .case(workActions.getThumbnail.done, (state: IWrokState, success: Success<string, string>) => {
         let stateTmp = Object.assign(state);
         stateTmp.isLoading = false;
-        stateTmp.works
-            .filter((work: IWorkState) => work.thumbnail === success.params)
-            .map((work: IWorkState) => work.thumbnailURL = success.result)
+        stateTmp.workItems
+            .filter((workItem: IWorkItemState) => workItem.thumbnail === success.params)
+            .map((workItem: IWorkItemState) => workItem.thumbnailURL = success.result)
 
         return Object.assign({}, state, { stateTmp });
     })
-    .case(workActions.getDetailImages.done, (state: IFirebaseState, success: Success<IWorkState | null, string[]>) => {
+    .case(workActions.getDetailImages.done, (state: IWrokState, success: Success<IWorkItemState | null, string[]>) => {
         if (success.params !== null) {
             const title = success.params.title
             let stateTmp = Object.assign(state);
-            stateTmp.works
-                .filter((work: IWorkState) => work.title === title)
-                .map((work: IWorkState) => work.imageURLs = success.result)
+            stateTmp.workItems
+                .filter((work: IWorkItemState) => work.title === title)
+                .map((work: IWorkItemState) => work.imageURLs = success.result)
 
             return Object.assign({}, state, { stateTmp });
         }
