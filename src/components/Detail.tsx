@@ -15,12 +15,12 @@ interface DetailActions {
     
 }
 
-interface OwnRouteParams {
-    id: string
-}
-
 interface OwnProps {
     
+}
+
+interface OwnRouteParams {
+    id: string
 }
 
 type DetailProps = OwnProps & DetailActions & RouteComponentProps<OwnRouteParams> & AppState;

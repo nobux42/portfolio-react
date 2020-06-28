@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 import { Action } from 'typescript-fsa';
 import { Helmet } from 'react-helmet';
 import { auth, signInWithGoogle } from "../firebase";
-import { IAuthState } from "../states/auth";
 import { AppState } from "../store";
 
 interface OwnProps {
-    auth: IAuthState
+    
 }
 
 type SignInProps = OwnProps;

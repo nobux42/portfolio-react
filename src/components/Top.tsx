@@ -11,12 +11,12 @@ import { IWorkItemState } from '../states/work';
 import { userActions } from '../actions/actions';
 import OctetttrussSvg from './asset/OctetttrussSvg'
 
-interface TopActions {
-    selecteWork: (work: IWorkItemState | null) => Action<IWorkItemState | null>;
-}
-
 interface OwnProps {
     
+}
+
+interface TopActions {
+    selecteWork: (work: IWorkItemState | null) => Action<IWorkItemState | null>;
 }
 
 type TopProps = OwnProps & AppState & TopActions & RouteComponentProps;

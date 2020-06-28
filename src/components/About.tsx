@@ -6,7 +6,6 @@ import { Helmet } from 'react-helmet';
 import { AppState } from '../store';
 import { IWorkItemState } from '../states/work';
 
-
 interface OwnProps {
     
 }
