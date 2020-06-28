@@ -54,18 +54,18 @@ const Detail: React.FC<DetailProps> = (props: DetailProps) => {
     return (
         <>
             <Helmet>
-                <title>{ props.user.selectedWork ? props.user.selectedWork.title : "Detail" } | nobux42</title>
+                <title>{ props.user.selectedWorkItem ? props.user.selectedWorkItem.title : "Detail" } | nobux42</title>
             </Helmet>
             <div className="detail">
                 <div className="uk-section">
                     <div className="uk-container">
                         {/* <h1 className="title">{ props.match ? props.match.params.id: "" }</h1> */}
-                        <h1 className="title">{ props.user.selectedWork ? props.user.selectedWork.title : "" }</h1>
+                        <h1 className="title">{ props.user.selectedWorkItem ? props.user.selectedWorkItem.title : "" }</h1>
                         <p className="skills">
                         {
                             (() => {
-                                if( props.user.selectedWork) {
-                                    return props.user.selectedWork.skills.map((skill, index) => 
+                                if( props.user.selectedWorkItem) {
+                                    return props.user.selectedWorkItem.skills.map((skill, index) => 
                                         (<span key={index} className="skill-large">{skill}</span>)
                                     );
                                 }
@@ -76,8 +76,8 @@ const Detail: React.FC<DetailProps> = (props: DetailProps) => {
                         <p className="description">
                         {
                             (() => {
-                                if( props.user.selectedWork) {
-                                    return props.user.selectedWork.description.split('<br>').map( (line, index) => 
+                                if( props.user.selectedWorkItem) {
+                                    return props.user.selectedWorkItem.description.split('<br>').map( (line, index) => 
                                         (<React.Fragment key={index}><span>{line}</span><br/></React.Fragment>)
                                     );
                                 }
@@ -88,8 +88,8 @@ const Detail: React.FC<DetailProps> = (props: DetailProps) => {
                         <div className="images">
                         {
                             (() => {
-                                if( props.user.selectedWork && props.user.selectedWork.imageURLs) {
-                                    return props.user.selectedWork.imageURLs.map((url, index) => {
+                                if( props.user.selectedWorkItem && props.user.selectedWorkItem.imageURLs) {
+                                    return props.user.selectedWorkItem.imageURLs.map((url, index) => {
                                         if(url.indexOf(".mp4") === -1) {
                                             return (<img key={index} src={url} alt={index.toString()} />)
                                         } else {

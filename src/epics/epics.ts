@@ -8,7 +8,7 @@ import { firestore, storage } from '../firebase';
 import { IWorkItemState } from '../states/work';
 
 
-const firebaseGetWorksEpic: Epic =
+const getWorksStartedEpic: Epic =
     action$ => 
         action$.pipe(
             ofType(workActions.getWorks.started.type),
@@ -31,7 +31,7 @@ const firebaseGetWorksEpic: Epic =
             })
         )
 
-const firebaseGetWorksDoneEpic: Epic =
+const getWorksDoneEpic: Epic =
     action$ => 
         action$.pipe(
             ofType(workActions.getWorks.done.type),
@@ -43,7 +43,7 @@ const firebaseGetWorksDoneEpic: Epic =
             })
         )
 
-const firebaseGetThumbnailEpic: Epic =
+const getThumbnailStartedEpic: Epic =
     action$ => 
         action$.pipe(
             ofType(workActions.getThumbnail.started.type),
@@ -59,30 +59,7 @@ const firebaseGetThumbnailEpic: Epic =
             })
         )
 
-// const userGetDetailImages: Epic =
-//         action$ => 
-//             action$.pipe(
-//                 ofType(userActions.getDetailImages.started.type),
-//                 flatMap((action: Action<IWorkState | null>) => {
-//                     console.log("userGetDetailImages flatMap:", action)
-//                     if( action.payload) {
-//                         return action.payload.images
-//                     } else {
-//                         return [""]
-//                     }
-//                 }),
-//                 mergeMap((imageName: string) => {
-//                     console.log("userGetDetailImages mergeMap:", imageName)
-//                     let spaceRef = storage.ref().child(imageName)
-//                     return spaceRef.getDownloadURL()
-//                 }),
-//                 toArray(),
-//                 map((resutl: string[]) => {
-//                     console.log("userGetDetailImages:", resutl)
-//                     return userActions.getDetailImages.done({ params: null, result: resutl })
-//                 })
-//             )
-const userGetDetailImages: Epic =
+const getDetailImagesStartedEpic: Epic =
     action$ => 
         action$.pipe(
             ofType(workActions.getDetailImages.started.type),
@@ -111,10 +88,10 @@ const userGetDetailImages: Epic =
 
 
 export const rootEpic = combineEpics(
-    firebaseGetWorksEpic,
-    firebaseGetWorksDoneEpic,
-    firebaseGetThumbnailEpic,
-    userGetDetailImages,
+    getWorksStartedEpic,
+    getWorksDoneEpic,
+    getThumbnailStartedEpic,
+    getDetailImagesStartedEpic,
 );
 
 export const epicMiddleware = createEpicMiddleware();
