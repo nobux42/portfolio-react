@@ -4,7 +4,7 @@ import { authActions } from '../actions/actions';
 import { IWorkItemState } from './work';
 
 export interface IAuthState {
-    user: string | null
+    user: firebase.User | null
 }
   
 const initialAuthState: IAuthState = {

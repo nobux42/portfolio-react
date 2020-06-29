@@ -3,10 +3,22 @@ import { Action, Success } from 'typescript-fsa';
 import { of, defer, forkJoin, ObservableInput } from 'rxjs';
 import { map, mergeMap, flatMap } from "rxjs/operators";
 import { combineEpics, Epic, createEpicMiddleware, ofType } from 'redux-observable';
-import { workActions, IWorkItem } from '../actions/actions'
+import { authActions, workActions, IWorkItem } from '../actions/actions'
 import { firestore, storage } from '../firebase';
 import { IWorkItemState } from '../states/work';
+import { push } from 'connected-react-router';
 
+const setUserEpic: Epic = 
+    actions$ => 
+        actions$.pipe(
+            ofType(authActions.setUser.type),
+            mergeMap((action: Action<firebase.User>) => {
+                if (action.payload) {
+                    return of(push('/'))
+                }
+                return []
+            })
+        )
 
 const getWorksStartedEpic: Epic =
     action$ => 
@@ -83,11 +95,12 @@ const getDetailImagesStartedEpic: Epic =
                 return workActions.getDetailImages.done({ params: action.payload, result: images })
             })
         )
-    
-            
+
+
 
 
 export const rootEpic = combineEpics(
+    setUserEpic,
     getWorksStartedEpic,
     getWorksDoneEpic,
     getThumbnailStartedEpic,

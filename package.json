@@ -12,6 +12,7 @@
     "@types/react-router-dom": "^4.3.4",
     "@types/react-transition-group": "^4.2.2",
     "@types/redux-logger": "^3.0.7",
+    "connected-react-router": "^6.8.0",
     "firebase": "^6.6.2",
     "firebase-tools": "^7.10.0",
     "normalize.css": "^8.0.1",
