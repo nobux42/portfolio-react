@@ -7,16 +7,16 @@ import { Helmet } from "react-helmet";
 import { AppState } from '../store'
 import TopSection from './common/TopSection'
 import WorkCard from './ui-parts/WorkCard'
-import { IWorkState } from '../states/states';
+import { IWorkItemState } from '../states/work';
 import { userActions } from '../actions/actions';
 import OctetttrussSvg from './asset/OctetttrussSvg'
 
-interface TopActions {
-    selecteWork: (work: IWorkState | null) => Action<IWorkState | null>;
-}
-
 interface OwnProps {
     
+}
+
+interface TopActions {
+    selecteWork: (work: IWorkItemState | null) => Action<IWorkItemState | null>;
 }
 
 type TopProps = OwnProps & AppState & TopActions & RouteComponentProps;
@@ -43,7 +43,7 @@ const Top: React.FC<TopProps>  = (props: TopProps) => {
                 <TopSection title={'works'}>
                     <div className="uk-child-width-1-3@m" uk-grid="">
                     {
-                        props.firebase.works.map((work, index) => <WorkCard key={index} work={work}></WorkCard>)
+                        props.work.workItems.map((workItem, index) => <WorkCard key={index} workItem={workItem}></WorkCard>)
                     }
                     </div>
                 </TopSection>
@@ -99,9 +99,9 @@ const Top: React.FC<TopProps>  = (props: TopProps) => {
     )
 }
 
-function mapDispatchToProps(dispatch: Dispatch<Action<IWorkState | null>>) {
+function mapDispatchToProps(dispatch: Dispatch<Action<IWorkItemState | null>>) {
     return {
-        selecteWork: (work: IWorkState | null) => dispatch(userActions.SelecteWork(work)),
+        selecteWork: (work: IWorkItemState | null) => dispatch(userActions.selecteWork(work)),
     }
 }
   

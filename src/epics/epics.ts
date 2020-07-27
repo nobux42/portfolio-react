@@ -3,20 +3,32 @@ import { Action, Success } from 'typescript-fsa';
 import { of, defer, forkJoin, ObservableInput } from 'rxjs';
 import { map, mergeMap, flatMap } from "rxjs/operators";
 import { combineEpics, Epic, createEpicMiddleware, ofType } from 'redux-observable';
-import { firebaseActions, IWork } from '../actions/actions'
+import { authActions, workActions, IWorkItem } from '../actions/actions'
 import { firestore, storage } from '../firebase';
-import { IWorkState } from '../states/states';
+import { IWorkItemState } from '../states/work';
+import { push } from 'connected-react-router';
 
+const setUserEpic: Epic = 
+    actions$ => 
+        actions$.pipe(
+            ofType(authActions.setUser.type),
+            mergeMap((action: Action<firebase.User>) => {
+                if (action.payload) {
+                    return of(push('/'))
+                }
+                return []
+            })
+        )
 
-const firebaseGetWorksEpic: Epic =
+const getWorksStartedEpic: Epic =
     action$ => 
         action$.pipe(
-            ofType(firebaseActions.getWorks.started.type),
+            ofType(workActions.getWorks.started.type),
             mergeMap((action: Action<void>) => {
                 return firestore.collection('Works').orderBy("year", "desc").get()
             }),
             map((snapshot) => {
-                const works: IWork[] = []
+                const works: IWorkItem[] = []
                 snapshot.forEach((doc) => {
                     works.push({
                         title: doc.data().title,
@@ -27,26 +39,26 @@ const firebaseGetWorksEpic: Epic =
                         images: doc.data().images,
                     })
                 })
-                return firebaseActions.getWorks.done({ result: works })
+                return workActions.getWorks.done({ result: works })
             })
         )
 
-const firebaseGetWorksDoneEpic: Epic =
+const getWorksDoneEpic: Epic =
     action$ => 
         action$.pipe(
-            ofType(firebaseActions.getWorks.done.type),
-            flatMap((action: Action<Success<void, IWork[]>>) => {
+            ofType(workActions.getWorks.done.type),
+            flatMap((action: Action<Success<void, IWorkItem[]>>) => {
                 return action.payload.result
             }),
-            map((work: IWork) => {
-                return firebaseActions.getThumbnail.started(work.thumbnail)
+            map((work: IWorkItem) => {
+                return workActions.getThumbnail.started(work.thumbnail)
             })
         )
 
-const firebaseGetThumbnailEpic: Epic =
+const getThumbnailStartedEpic: Epic =
     action$ => 
         action$.pipe(
-            ofType(firebaseActions.getThumbnail.started.type),
+            ofType(workActions.getThumbnail.started.type),
             mergeMap((action: Action<string>) => forkJoin(
                 of(action),
                 defer(() => { 
@@ -55,66 +67,44 @@ const firebaseGetThumbnailEpic: Epic =
                 })
             )),
             map(([action, url]: [any, any]) => {
-                return firebaseActions.getThumbnail.done({ params: action.payload, result: url })
+                return workActions.getThumbnail.done({ params: action.payload, result: url })
             })
         )
 
-// const userGetDetailImages: Epic =
-//         action$ => 
-//             action$.pipe(
-//                 ofType(userActions.getDetailImages.started.type),
-//                 flatMap((action: Action<IWorkState | null>) => {
-//                     console.log("userGetDetailImages flatMap:", action)
-//                     if( action.payload) {
-//                         return action.payload.images
-//                     } else {
-//                         return [""]
-//                     }
-//                 }),
-//                 mergeMap((imageName: string) => {
-//                     console.log("userGetDetailImages mergeMap:", imageName)
-//                     let spaceRef = storage.ref().child(imageName)
-//                     return spaceRef.getDownloadURL()
-//                 }),
-//                 toArray(),
-//                 map((resutl: string[]) => {
-//                     console.log("userGetDetailImages:", resutl)
-//                     return userActions.getDetailImages.done({ params: null, result: resutl })
-//                 })
-//             )
-const userGetDetailImages: Epic =
-        action$ => 
-            action$.pipe(
-                ofType(firebaseActions.getDetailImages.started.type),
-                mergeMap((action: Action<IWorkState | null>) => forkJoin(
-                    of(action),
-                    defer(() => { 
-                        if(action.payload != null) {
-                            let defers: ObservableInput<any>[] = []
-                            for(var image of action.payload.images) {
-                                let spaceRef = storage.ref().child(image)
-                                let defer = spaceRef.getDownloadURL()
-                                defers.push(defer)
-                            }
-                            return forkJoin(...defers)
+const getDetailImagesStartedEpic: Epic =
+    action$ => 
+        action$.pipe(
+            ofType(workActions.getDetailImages.started.type),
+            mergeMap((action: Action<IWorkItemState | null>) => forkJoin(
+                of(action),
+                defer(() => { 
+                    if(action.payload != null) {
+                        let defers: ObservableInput<any>[] = []
+                        for(var image of action.payload.images) {
+                            let spaceRef = storage.ref().child(image)
+                            let defer = spaceRef.getDownloadURL()
+                            defers.push(defer)
                         }
-                        return []
-                    })
-                )),
-                map(([action, images]: [Action<IWorkState | null>, string[]]) => {
-                    console.log("userGetDetailImages:", images)
-                    return firebaseActions.getDetailImages.done({ params: action.payload, result: images })
+                        return forkJoin(...defers)
+                    }
+                    return []
                 })
-            )
-    
-            
+            )),
+            map(([action, images]: [Action<IWorkItemState | null>, string[]]) => {
+                console.log("userGetDetailImages:", images)
+                return workActions.getDetailImages.done({ params: action.payload, result: images })
+            })
+        )
+
+
 
 
 export const rootEpic = combineEpics(
-    firebaseGetWorksEpic,
-    firebaseGetWorksDoneEpic,
-    firebaseGetThumbnailEpic,
-    userGetDetailImages,
+    setUserEpic,
+    getWorksStartedEpic,
+    getWorksDoneEpic,
+    getThumbnailStartedEpic,
+    getDetailImagesStartedEpic,
 );
 
 export const epicMiddleware = createEpicMiddleware();

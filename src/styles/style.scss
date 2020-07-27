@@ -6,12 +6,15 @@
 @import "uikit/src/scss/mixins-theme.scss";
 @import "uikit/src/scss/uikit-theme.scss";
 
+@import "common/controls";
+
 @import "components/header";
 @import "components/footer";
 @import "components/top";
 @import "components/top/eyecatch";
 @import "components/detail";
 @import "components/about";
+@import "components/signin";
 @import "components/ui-parts/workcard";
 
 html {

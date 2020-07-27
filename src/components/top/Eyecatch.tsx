@@ -19,22 +19,22 @@ type EycatchProps = OwnProps & AppState & RouteComponentProps<OwnRouteParams>;
 const Eyecatch: React.FC<EycatchProps> = (props: EycatchProps) => {
     return (
         <div className="eyecatch">
-            <CSSTransition in={!!props.user.workHover.hovered} timeout={300}  classNames="cover">
+            <CSSTransition in={!!props.user.hoveredWorkItem} timeout={300}  classNames="cover">
                 {
                     (() => {
-                        if(props.user.workHover.work) {
-                            return <div className="cover uk-background-cover" data-src={props.user.workHover.work.thumbnailURL} uk-img=""></div>
+                        if(props.user.hoveredWorkItem) {
+                            return <div className="cover uk-background-cover" data-src={props.user.hoveredWorkItem.thumbnailURL} uk-img=""></div>
                         }
                         return <></>
                     })()
                 }
             </CSSTransition>
             <OctetttrussSvg/>
-            <CSSTransition in={!!props.user.selectedWork} timeout={300}  classNames="cover">
+            <CSSTransition in={!!props.user.selectedWorkItem} timeout={300}  classNames="cover">
                 {
                     (() => {
-                        if(props.user.selectedWork) {
-                            return <div className="cover-strong uk-background-cover" data-src={props.user.selectedWork.thumbnailURL} uk-img=""></div>
+                        if(props.user.selectedWorkItem) {
+                            return <div className="cover-strong uk-background-cover" data-src={props.user.selectedWorkItem.thumbnailURL} uk-img=""></div>
                         }
                         return <></>
                     })()

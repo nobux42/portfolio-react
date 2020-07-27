@@ -1,0 +1,8 @@
+.uk-button {
+    color: $black;
+    
+    &:hover {
+        color: $brand-sub;
+        background-color: $brand-primary;
+    }
+}

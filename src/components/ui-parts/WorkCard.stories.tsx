@@ -18,7 +18,7 @@ export default {
   component: WorkCard,
 };
 
-let work = {
+let workItem = {
     description: "開発の依頼を受け、柏の葉のイベントサイトを構築した。先方と仕様の確認を取りつつWordpressでテーマの開発を行った。<br> <br> チーム: デザイナー１人、エンジニア１人<br> 担当: エンジニア",
     images: ["kashiwanoha-01.png"],
     skills: ["Wordpress"],
@@ -35,9 +35,9 @@ export const WorkCardDesktop = () => (
       <div className="uk-section">
         <div className="uk-container">
           <div className="uk-child-width-1-3@m" uk-grid="">
-            <WorkCard key={1} work={work}></WorkCard>
-            <WorkCard key={2} work={work}></WorkCard>
-            <WorkCard key={3} work={work}></WorkCard>
+            <WorkCard key={1} workItem={workItem}></WorkCard>
+            <WorkCard key={2} workItem={workItem}></WorkCard>
+            <WorkCard key={3} workItem={workItem}></WorkCard>
           </div>
         </div>
       </div>
@@ -52,9 +52,9 @@ export const WorkCardMobile = () => (
         <div className="uk-section">
           <div className="uk-container">
             <div className="uk-child-width-1-3@m" uk-grid="">
-              <WorkCard key={1} work={work}></WorkCard>
-              <WorkCard key={2} work={work}></WorkCard>
-              <WorkCard key={3} work={work}></WorkCard>
+              <WorkCard key={1} workItem={workItem}></WorkCard>
+              <WorkCard key={2} workItem={workItem}></WorkCard>
+              <WorkCard key={3} workItem={workItem}></WorkCard>
             </div>
           </div>
         </div>

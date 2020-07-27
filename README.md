@@ -4,6 +4,7 @@ URL: https://nobux42.com/
 ## Libraries and Tools
 - React
   - react-route
+    - connected-react-router 
   - Redux
     - typescript-fsa & typescript-fsa-reducers
     - rxjs & redux-obserbable
