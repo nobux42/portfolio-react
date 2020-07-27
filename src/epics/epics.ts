@@ -14,18 +14,22 @@ const setUserEpic: Epic =
             ofType(authActions.setUser.type),
             mergeMap((action: Action<firebase.User>) => {
                 if (action.payload) {
-                    return of(push('/'))
+                    return [push('/'), workActions.getWorks.started()]
                 }
-                return []
+                return [workActions.getWorks.started()]
             })
         )
 
 const getWorksStartedEpic: Epic =
-    action$ => 
+    (action$, state$) => 
         action$.pipe(
             ofType(workActions.getWorks.started.type),
-            mergeMap((action: Action<void>) => {
-                return firestore.collection('Works').orderBy("year", "desc").get()
+            mergeMap((action: Action<void>, s) => {
+                if (state$.value.auth.user) {
+                    return firestore.collection('Works').orderBy("year", "desc").get() 
+                } else {
+                    return firestore.collection('Works').where("isPrivate", "==", false).orderBy("year", "desc").get()
+                }
             }),
             map((snapshot) => {
                 const works: IWorkItem[] = []

@@ -37,9 +37,10 @@ const App: React.FC<AppProps> = (props: AppProps) => {
         ReactGA.set({ page: '/' });
         ReactGA.pageview('/');
 
-        props.getWorks()
+        props.getWorks();
 
         auth.onAuthStateChanged((userAuth: any) => {
+            console.log("setUser", userAuth); // TODO REMOVE
             props.setUser(userAuth);
         });
         // TODO:
