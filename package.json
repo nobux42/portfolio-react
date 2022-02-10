@@ -64,6 +64,6 @@
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/react": "^5.3.18",
     "@types/react-redux": "^7.1.1",
-    "node-sass": "^4.12.0"
+    "node-sass": "^7.0.0"
   }
 }
